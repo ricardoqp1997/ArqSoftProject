@@ -1,0 +1,5 @@
+Es necesario crear un archivo Procfiles SIN EXTENSION para ejecutar el dyno de java WEB
+Es necesario acceder mediante consola y ejecutar:
+heroku ps:scale web=1
+heroku restart
+heroku run java console -a <nombre app>
