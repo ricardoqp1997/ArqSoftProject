@@ -7,12 +7,12 @@
 
 	<groupId>co.edu.ucatolica.admisiones</groupId>
 	<artifactId>AdmisionesUN</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>war</packaging>
 
 	<name>AdmisionesUN Maven Webapp</name>
 	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
+	<url>https://admisionesun.herokuapp.com/</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,17 +53,18 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+	<!-- Plugins necesarios para el correcto funcionamiento de pluginManagement -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 
 			<plugins>
+				<!-- Plugins necesarios para el despligue en Heroku -->
 				<plugin>
 					<groupId>com.heroku.sdk</groupId>
 					<artifactId>heroku-maven-plugin</artifactId>
@@ -104,6 +105,7 @@
 						<warSourceDirectory>WebContent</warSourceDirectory>
 					</configuration>
 				</plugin>
+				<!-- Fin Plugins necesarios para el despligue en Heroku -->
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
