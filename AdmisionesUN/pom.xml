@@ -50,6 +50,24 @@
 				defaults (may be moved to parent pom) -->
 			<plugins>
 				<plugin>
+					<groupId>com.heroku.sdk</groupId>
+					<artifactId>heroku-maven-plugin</artifactId>
+					<version>2.0.3</version>
+					<configuration>
+						<appName>afnemo</appName>
+						<warFile>target/Admisiones.war</warFile>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.2.2</version>
+					<configuration>
+						<warName>Admisiones</warName>
+						<warSourceDirectory>WebContent</warSourceDirectory>
+					</configuration>
+				</plugin>
+				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
 				</plugin>
