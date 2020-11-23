@@ -9,29 +9,31 @@ import javax.persistence.Persistence;
 import javax.persistence.TransactionRequiredException;
 import javax.persistence.TypedQuery;
 
-import model.DTO.Departamento;
+import model.DTO.Aspirante;
+import model.DTO.Ciudad;
+import model.DTO.SedeUniversidad;
 
-public class DepartamentoDAO {
+public class SedeUniversidadDAO {
 	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private static String ERRORCREAR = "Error al crear departamento";
-	private static String ERRORACTUALIZAR = "Error al actualizar departamento";
-	private static String ERRORELIMINAR = "Error al eliminar departamento";
-	private static final String CODIGOERROR = "10";
+	private static String ERRORCREAR = "Error al crear sede";
+	private static String ERRORACTUALIZAR = "Error al actualizar sede";
+	private static String ERRORELIMINAR = "Error al eliminar sede";
+	private static final String CODIGOERROR = "50";
 
-	public DepartamentoDAO() {
+	public SedeUniversidadDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
 	}
 
-	public String Create(Departamento departamento) {
+	public String Create(SedeUniversidad ciudad) {
 		String mensajeError = ERRORCREAR;
 		String codError = "";
 
 		try {
 			em.getTransaction().begin();
-			em.persist(departamento);
+			em.persist(ciudad);
 			em.getTransaction().commit();
 
 			codError = "0000";
@@ -57,14 +59,20 @@ public class DepartamentoDAO {
 		return codError;
 	}
 
-	public String actualizarDepartamento(int idDepartamento, String nombreDepartamento) {
+	public String actualizarSedeUniversidadNombre(Integer idSedeUniversidad, List<Aspirante> aspirantes,
+			String nombreSedeUniversidad, String direccionSede, Ciudad ciudad) {
 		String mensajeError = ERRORACTUALIZAR;
 		String codError = "";
 		try {
 
 			em.getTransaction().begin();
-			Departamento departamentomodificar = em.find(Departamento.class, idDepartamento);
-			departamentomodificar.setNombreDepartamento(nombreDepartamento);
+			SedeUniversidad sedemodificar = em.find(SedeUniversidad.class, idSedeUniversidad);
+			sedemodificar.setAspirantes(aspirantes == null ? sedemodificar.getAspirantes() : aspirantes);
+			sedemodificar.setCiudad(ciudad == null ? sedemodificar.getCiudad() : ciudad);
+			sedemodificar.setDireccionSede(direccionSede == null ? sedemodificar.getDireccionSede() : direccionSede);
+			sedemodificar.setNombreSede(
+					nombreSedeUniversidad == null ? sedemodificar.getNombreSede() : nombreSedeUniversidad);
+
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
@@ -82,31 +90,31 @@ public class DepartamentoDAO {
 		return codError;
 	}
 
-	public List<Departamento> buscarTodosDepartamentos() {
-		TypedQuery<Departamento> seleccionarDepartamentos = em.createNamedQuery("Departamento.findAll",
-				Departamento.class);
-		List<Departamento> departamentos = seleccionarDepartamentos.getResultList();
-		return departamentos;
+	public List<SedeUniversidad> buscarTodosSedeUniversidads() {
+		TypedQuery<SedeUniversidad> seleccionarSedeUniversidad = em.createNamedQuery("SedeUniversidad.findAll",
+				SedeUniversidad.class);
+		List<SedeUniversidad> sedes = seleccionarSedeUniversidad.getResultList();
+		return sedes;
 	}
 
-	public Departamento buscarDepartamentoId(int idDepartamento) {
-		Departamento departamento = em.find(Departamento.class, idDepartamento);
-		return departamento;
+	public SedeUniversidad buscarSedeUniversidadId(int idSedeUniversidad) {
+		SedeUniversidad sede = em.find(SedeUniversidad.class, idSedeUniversidad);
+		return sede;
 	}
 
-	public Departamento buscarDepartamentoId(String nombreDepartamento) {
-		Departamento departamento = em.find(Departamento.class, nombreDepartamento);
-		return departamento;
+	public SedeUniversidad buscarSedeUniversidadId(String nombreSedeUniversidad) {
+		SedeUniversidad sede = em.find(SedeUniversidad.class, nombreSedeUniversidad);
+		return sede;
 	}
 
-	public String eliminarDepartamento(int idDepartamento) {
+	public String eliminarSedeUniversidad(int idSedeUniversidad) {
 
-		Departamento departamento = em.find(Departamento.class, idDepartamento);
+		SedeUniversidad sede = em.find(SedeUniversidad.class, idSedeUniversidad);
 		String codError = "";
-		String mensajeError = ERRORELIMINAR + "con Id: " + idDepartamento + " ";
+		String mensajeError = ERRORELIMINAR + "con id: " + idSedeUniversidad + " ";
 		try {
 			em.getTransaction().begin();
-			em.remove(departamento);
+			em.remove(sede);
 			em.getTransaction().commit();
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
@@ -123,5 +131,4 @@ public class DepartamentoDAO {
 		}
 		return codError;
 	}
-
 }

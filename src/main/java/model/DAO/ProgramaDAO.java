@@ -9,29 +9,30 @@ import javax.persistence.Persistence;
 import javax.persistence.TransactionRequiredException;
 import javax.persistence.TypedQuery;
 
-import model.DTO.Departamento;
+import model.DTO.Aspirante;
+import model.DTO.Programa;
 
-public class DepartamentoDAO {
+public class ProgramaDAO {
 	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private static String ERRORCREAR = "Error al crear departamento";
-	private static String ERRORACTUALIZAR = "Error al actualizar departamento";
-	private static String ERRORELIMINAR = "Error al eliminar departamento";
-	private static final String CODIGOERROR = "10";
+	private static String ERRORCREAR = "Error al crear programa";
+	private static String ERRORACTUALIZAR = "Error al actualizar programa";
+	private static String ERRORELIMINAR = "Error al eliminar programa";
+	private static final String CODIGOERROR = "50";
 
-	public DepartamentoDAO() {
+	public ProgramaDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
 	}
 
-	public String Create(Departamento departamento) {
+	public String Create(Programa ciudad) {
 		String mensajeError = ERRORCREAR;
 		String codError = "";
 
 		try {
 			em.getTransaction().begin();
-			em.persist(departamento);
+			em.persist(ciudad);
 			em.getTransaction().commit();
 
 			codError = "0000";
@@ -57,14 +58,16 @@ public class DepartamentoDAO {
 		return codError;
 	}
 
-	public String actualizarDepartamento(int idDepartamento, String nombreDepartamento) {
+	public String actualizarProgramaNombre(Integer idPrograma, List<Aspirante> aspirantes, String nombrePrograma) {
 		String mensajeError = ERRORACTUALIZAR;
 		String codError = "";
 		try {
 
 			em.getTransaction().begin();
-			Departamento departamentomodificar = em.find(Departamento.class, idDepartamento);
-			departamentomodificar.setNombreDepartamento(nombreDepartamento);
+			Programa programamodificar = em.find(Programa.class, idPrograma);
+			programamodificar.setAspirantes(aspirantes == null ? programamodificar.getAspirantes() : aspirantes);
+			programamodificar.setNombrePrograma(nombrePrograma == null ? programamodificar.getNombrePrograma() : nombrePrograma);
+
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
@@ -82,31 +85,30 @@ public class DepartamentoDAO {
 		return codError;
 	}
 
-	public List<Departamento> buscarTodosDepartamentos() {
-		TypedQuery<Departamento> seleccionarDepartamentos = em.createNamedQuery("Departamento.findAll",
-				Departamento.class);
-		List<Departamento> departamentos = seleccionarDepartamentos.getResultList();
-		return departamentos;
+	public List<Programa> buscarTodosProgramas() {
+		TypedQuery<Programa> seleccionarPrograma = em.createNamedQuery("Programa.findAll", Programa.class);
+		List<Programa> programas = seleccionarPrograma.getResultList();
+		return programas;
 	}
 
-	public Departamento buscarDepartamentoId(int idDepartamento) {
-		Departamento departamento = em.find(Departamento.class, idDepartamento);
-		return departamento;
+	public Programa buscarProgramaId(int idPrograma) {
+		Programa programa = em.find(Programa.class, idPrograma);
+		return programa;
 	}
 
-	public Departamento buscarDepartamentoId(String nombreDepartamento) {
-		Departamento departamento = em.find(Departamento.class, nombreDepartamento);
-		return departamento;
+	public Programa buscarProgramaId(String nombrePrograma) {
+		Programa programa = em.find(Programa.class, nombrePrograma);
+		return programa;
 	}
 
-	public String eliminarDepartamento(int idDepartamento) {
+	public String eliminarPrograma(int idPrograma) {
 
-		Departamento departamento = em.find(Departamento.class, idDepartamento);
+		Programa programa = em.find(Programa.class, idPrograma);
 		String codError = "";
-		String mensajeError = ERRORELIMINAR + "con Id: " + idDepartamento + " ";
+		String mensajeError = ERRORELIMINAR + "con id: " + idPrograma + " ";
 		try {
 			em.getTransaction().begin();
-			em.remove(departamento);
+			em.remove(programa);
 			em.getTransaction().commit();
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
@@ -123,5 +125,4 @@ public class DepartamentoDAO {
 		}
 		return codError;
 	}
-
 }

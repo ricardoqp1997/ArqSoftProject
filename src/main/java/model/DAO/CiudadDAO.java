@@ -9,29 +9,29 @@ import javax.persistence.Persistence;
 import javax.persistence.TransactionRequiredException;
 import javax.persistence.TypedQuery;
 
-import model.DTO.Departamento;
+import model.DTO.Ciudad;
 
-public class DepartamentoDAO {
+public class CiudadDAO {
 	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private static String ERRORCREAR = "Error al crear departamento";
-	private static String ERRORACTUALIZAR = "Error al actualizar departamento";
-	private static String ERRORELIMINAR = "Error al eliminar departamento";
-	private static final String CODIGOERROR = "10";
+	private static String ERRORCREAR = "Error al crear ciudad";
+	private static String ERRORACTUALIZAR = "Error al actualizar ciudad";
+	private static String ERRORELIMINAR = "Error al eliminar ciudad";
+	private static final String CODIGOERROR = "20";
 
-	public DepartamentoDAO() {
+	public CiudadDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
 	}
 
-	public String Create(Departamento departamento) {
+	public String Create(Ciudad ciudad) {
 		String mensajeError = ERRORCREAR;
 		String codError = "";
 
 		try {
 			em.getTransaction().begin();
-			em.persist(departamento);
+			em.persist(ciudad);
 			em.getTransaction().commit();
 
 			codError = "0000";
@@ -57,14 +57,14 @@ public class DepartamentoDAO {
 		return codError;
 	}
 
-	public String actualizarDepartamento(int idDepartamento, String nombreDepartamento) {
+	public String actualizarCiudad(int idCiudad, String nombreCiudad) {
 		String mensajeError = ERRORACTUALIZAR;
 		String codError = "";
 		try {
 
 			em.getTransaction().begin();
-			Departamento departamentomodificar = em.find(Departamento.class, idDepartamento);
-			departamentomodificar.setNombreDepartamento(nombreDepartamento);
+			Ciudad ciudadmodificar = em.find(Ciudad.class, idCiudad);
+			ciudadmodificar.setNombreCiudad(nombreCiudad);
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
@@ -82,31 +82,30 @@ public class DepartamentoDAO {
 		return codError;
 	}
 
-	public List<Departamento> buscarTodosDepartamentos() {
-		TypedQuery<Departamento> seleccionarDepartamentos = em.createNamedQuery("Departamento.findAll",
-				Departamento.class);
-		List<Departamento> departamentos = seleccionarDepartamentos.getResultList();
-		return departamentos;
+	public List<Ciudad> buscarTodosCiudads() {
+		TypedQuery<Ciudad> seleccionarCiudad = em.createNamedQuery("Ciudad.findAll", Ciudad.class);
+		List<Ciudad> ciudads = seleccionarCiudad.getResultList();
+		return ciudads;
 	}
 
-	public Departamento buscarDepartamentoId(int idDepartamento) {
-		Departamento departamento = em.find(Departamento.class, idDepartamento);
-		return departamento;
+	public Ciudad buscarCiudadId(int idCiudad) {
+		Ciudad ciudad = em.find(Ciudad.class, idCiudad);
+		return ciudad;
 	}
 
-	public Departamento buscarDepartamentoId(String nombreDepartamento) {
-		Departamento departamento = em.find(Departamento.class, nombreDepartamento);
-		return departamento;
+	public Ciudad buscarCiudadId(String nombreCiudad) {
+		Ciudad ciudad = em.find(Ciudad.class, nombreCiudad);
+		return ciudad;
 	}
 
-	public String eliminarDepartamento(int idDepartamento) {
+	public String eliminarCiudad(int idCiudad) {
 
-		Departamento departamento = em.find(Departamento.class, idDepartamento);
+		Ciudad ciudad = em.find(Ciudad.class, idCiudad);
 		String codError = "";
-		String mensajeError = ERRORELIMINAR + "con Id: " + idDepartamento + " ";
+		String mensajeError = ERRORELIMINAR + "con Id: " + idCiudad + " ";
 		try {
 			em.getTransaction().begin();
-			em.remove(departamento);
+			em.remove(ciudad);
 			em.getTransaction().commit();
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
@@ -123,5 +122,4 @@ public class DepartamentoDAO {
 		}
 		return codError;
 	}
-
 }
