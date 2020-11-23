@@ -22,7 +22,7 @@ public class AspiranteDAO {
 	private static String ERRORCREAR = "Error al crear aspirante";
 	private static String ERRORACTUALIZAR = "Error al actualizar aspirante";
 	private static String ERRORELIMINAR = "Error al eliminar aspirante";
-	private static final String CODIGOERROR = "10";
+	private static final String CODIGOERROR = "30";
 
 	public AspiranteDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);

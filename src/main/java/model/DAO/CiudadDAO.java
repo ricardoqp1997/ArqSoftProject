@@ -18,7 +18,7 @@ public class CiudadDAO {
 	private static String ERRORCREAR = "Error al crear ciudad";
 	private static String ERRORACTUALIZAR = "Error al actualizar ciudad";
 	private static String ERRORELIMINAR = "Error al eliminar ciudad";
-	private static final String CODIGOERROR = "10";
+	private static final String CODIGOERROR = "20";
 
 	public CiudadDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
@@ -84,28 +84,28 @@ public class CiudadDAO {
 
 	public List<Ciudad> buscarTodosCiudads() {
 		TypedQuery<Ciudad> seleccionarCiudad = em.createNamedQuery("Ciudad.findAll", Ciudad.class);
-		List<Ciudad> departamentos = seleccionarCiudad.getResultList();
-		return departamentos;
+		List<Ciudad> ciudads = seleccionarCiudad.getResultList();
+		return ciudads;
 	}
 
 	public Ciudad buscarCiudadId(int idCiudad) {
-		Ciudad departamento = em.find(Ciudad.class, idCiudad);
-		return departamento;
+		Ciudad ciudad = em.find(Ciudad.class, idCiudad);
+		return ciudad;
 	}
 
 	public Ciudad buscarCiudadId(String nombreCiudad) {
-		Ciudad departamento = em.find(Ciudad.class, nombreCiudad);
-		return departamento;
+		Ciudad ciudad = em.find(Ciudad.class, nombreCiudad);
+		return ciudad;
 	}
 
 	public String eliminarCiudad(int idCiudad) {
 
-		Ciudad departamento = em.find(Ciudad.class, idCiudad);
+		Ciudad ciudad = em.find(Ciudad.class, idCiudad);
 		String codError = "";
 		String mensajeError = ERRORELIMINAR + "con Id: " + idCiudad + " ";
 		try {
 			em.getTransaction().begin();
-			em.remove(departamento);
+			em.remove(ciudad);
 			em.getTransaction().commit();
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
