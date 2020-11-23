@@ -18,7 +18,7 @@ public class CiudadDAO {
 	private static String ERRORCREAR = "Error al crear ciudad";
 	private static String ERRORACTUALIZAR = "Error al actualizar ciudad";
 	private static String ERRORELIMINAR = "Error al eliminar ciudad";
-	private static final String CODIGOERROR = "20";
+	private static final String CODIGOERROR = "DAO20";
 
 	public CiudadDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
@@ -26,7 +26,7 @@ public class CiudadDAO {
 	}
 
 	public String Create(Ciudad ciudad) {
-		String mensajeError = ERRORCREAR;
+		String mensajeError = "";
 		String codError = "";
 
 		try {
@@ -39,17 +39,17 @@ public class CiudadDAO {
 			mensajeError += " " + existEntity.getLocalizedMessage() + " " + existEntity.getMessage();
 			codError = CODIGOERROR + " 01";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -58,7 +58,7 @@ public class CiudadDAO {
 	}
 
 	public String actualizarCiudad(int idCiudad, String nombreCiudad) {
-		String mensajeError = ERRORACTUALIZAR;
+		String mensajeError = "";
 		String codError = "";
 		try {
 
@@ -69,12 +69,12 @@ public class CiudadDAO {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -102,7 +102,7 @@ public class CiudadDAO {
 
 		Ciudad ciudad = em.find(Ciudad.class, idCiudad);
 		String codError = "";
-		String mensajeError = ERRORELIMINAR + "con Id: " + idCiudad + " ";
+		String mensajeError = "";
 		try {
 			em.getTransaction().begin();
 			em.remove(ciudad);
@@ -111,12 +111,12 @@ public class CiudadDAO {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idCiudad, mensajeError);
 		} catch (Exception e) {
 			mensajeError += e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idCiudad, mensajeError);
 		} finally {
 			em.close();
 		}

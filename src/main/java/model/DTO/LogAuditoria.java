@@ -4,28 +4,31 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+
 /**
  * The persistent class for the log_auditoria database table.
  * 
  */
 @Entity
-@Table(name = "log_auditoria")
-@NamedQueries({ @NamedQuery(name = "LogAuditoria.findAll", query = "SELECT l FROM LogAuditoria l"),
-		@NamedQuery(name = "LogAuditoria.maxId", query = "SELECT max(l.idLog) FROM LogAuditoria l") })
+@Table(name="log_auditoria")
+@NamedQuery(name="LogAuditoria.findAll", query="SELECT l FROM LogAuditoria l")
 public class LogAuditoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id_log")
+	@Column(name="id_log")
 	private Integer idLog;
 
-	@Column(name = "cod_error")
+	@Column(name="cod_error")
 	private String codError;
 
-	@Column(name = "hora_error")
+	@Column(name="descripcion_mensaje_error")
+	private String descripcionMensajeError;
+
+	@Column(name="hora_error")
 	private Timestamp horaError;
 
-	@Column(name = "mensaje_error")
+	@Column(name="mensaje_error")
 	private String mensajeError;
 
 	public LogAuditoria() {
@@ -45,6 +48,14 @@ public class LogAuditoria implements Serializable {
 
 	public void setCodError(String codError) {
 		this.codError = codError;
+	}
+
+	public String getDescripcionMensajeError() {
+		return this.descripcionMensajeError;
+	}
+
+	public void setDescripcionMensajeError(String descripcionMensajeError) {
+		this.descripcionMensajeError = descripcionMensajeError;
 	}
 
 	public Timestamp getHoraError() {

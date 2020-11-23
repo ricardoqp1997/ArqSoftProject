@@ -4,25 +4,25 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the departamento database table.
  * 
  */
 @Entity
-@NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")
+@NamedQueries({ @NamedQuery(name = "Departamento.findId", query = "SELECT MAX(d.departamentoId) FROM Departamento d"),
+		@NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d") })
 public class Departamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="departamento_id")
+	@Column(name = "departamento_id")
 	private Integer departamentoId;
 
-	@Column(name="nombre_departamento")
+	@Column(name = "nombre_departamento")
 	private String nombreDepartamento;
 
-	//bi-directional many-to-one association to Ciudad
-	@OneToMany(mappedBy="departamento")
+	// bi-directional many-to-one association to Ciudad
+	@OneToMany(mappedBy = "departamento")
 	private List<Ciudad> ciudads;
 
 	public Departamento() {

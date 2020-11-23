@@ -19,10 +19,10 @@ public class AspiranteDAO {
 	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private static String ERRORCREAR = "Error al crear aspirante";
-	private static String ERRORACTUALIZAR = "Error al actualizar aspirante";
-	private static String ERRORELIMINAR = "Error al eliminar aspirante";
-	private static final String CODIGOERROR = "30";
+	private static final String ERRORCREAR = "Error al crear aspirante";
+	private static final String ERRORACTUALIZAR = "Error al actualizar aspirante";
+	private static final String ERRORELIMINAR = "Error al eliminar aspirante";
+	private static final String CODIGOERROR = "DAO30";
 
 	public AspiranteDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
@@ -30,7 +30,7 @@ public class AspiranteDAO {
 	}
 
 	public String Create(Aspirante ciudad) {
-		String mensajeError = ERRORCREAR;
+		String mensajeError = "";
 		String codError = "";
 
 		try {
@@ -43,17 +43,17 @@ public class AspiranteDAO {
 			mensajeError += " " + existEntity.getLocalizedMessage() + " " + existEntity.getMessage();
 			codError = CODIGOERROR + " 01";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -65,7 +65,7 @@ public class AspiranteDAO {
 			Boolean admitido, Integer cedulaAspirante, Programa programa, String examenFilename,
 			SedeUniversidad sedeUniversidad, Integer qrcodeAspirante, List<Consulta> consultas, Ciudad ciudad,
 			Integer edadAspirante, String sexoAspirante) {
-		String mensajeError = ERRORACTUALIZAR;
+		String mensajeError = "";
 		String codError = "";
 		try {
 
@@ -95,12 +95,12 @@ public class AspiranteDAO {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -128,7 +128,8 @@ public class AspiranteDAO {
 
 		Aspirante aspirante = em.find(Aspirante.class, idAspirante);
 		String codError = "";
-		String mensajeError = ERRORELIMINAR + "con Identificacion: " + idAspirante + " ";
+		String mensajeError = "";
+
 		try {
 			em.getTransaction().begin();
 			em.remove(aspirante);
@@ -137,12 +138,12 @@ public class AspiranteDAO {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con Identificacion: " + idAspirante, mensajeError);
 		} catch (Exception e) {
 			mensajeError += e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con Identificacion: " + idAspirante, mensajeError);
 		} finally {
 			em.close();
 		}

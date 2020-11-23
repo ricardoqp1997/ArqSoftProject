@@ -17,7 +17,7 @@ public class ConsultaDAO {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static String ERRORCREAR = "Error al crear consulta";
-	private static final String CODIGOERROR = "40";
+	private static final String CODIGOERROR = "DAO40";
 
 	public ConsultaDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
@@ -25,7 +25,7 @@ public class ConsultaDAO {
 	}
 
 	public String Create(Consulta consulta) {
-		String mensajeError = ERRORCREAR;
+		String mensajeError = "";
 		String codError = "";
 
 		try {
@@ -38,17 +38,17 @@ public class ConsultaDAO {
 			mensajeError += " " + existEntity.getLocalizedMessage() + " " + existEntity.getMessage();
 			codError = CODIGOERROR + " 01";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} finally {
 
 			em.close();

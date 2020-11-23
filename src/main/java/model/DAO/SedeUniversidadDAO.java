@@ -20,7 +20,7 @@ public class SedeUniversidadDAO {
 	private static String ERRORCREAR = "Error al crear sede";
 	private static String ERRORACTUALIZAR = "Error al actualizar sede";
 	private static String ERRORELIMINAR = "Error al eliminar sede";
-	private static final String CODIGOERROR = "50";
+	private static final String CODIGOERROR = "DAO50";
 
 	public SedeUniversidadDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
@@ -37,21 +37,21 @@ public class SedeUniversidadDAO {
 			em.getTransaction().commit();
 
 			codError = "0000";
-		} catch (EntityExistsException existEntity) {
+		}  catch (EntityExistsException existEntity) {
 			mensajeError += " " + existEntity.getLocalizedMessage() + " " + existEntity.getMessage();
 			codError = CODIGOERROR + " 01";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -77,12 +77,12 @@ public class SedeUniversidadDAO {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -111,7 +111,7 @@ public class SedeUniversidadDAO {
 
 		SedeUniversidad sede = em.find(SedeUniversidad.class, idSedeUniversidad);
 		String codError = "";
-		String mensajeError = ERRORELIMINAR + "con id: " + idSedeUniversidad + " ";
+		String mensajeError = "";
 		try {
 			em.getTransaction().begin();
 			em.remove(sede);
@@ -120,12 +120,12 @@ public class SedeUniversidadDAO {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idSedeUniversidad, mensajeError);
 		} catch (Exception e) {
 			mensajeError += e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idSedeUniversidad, mensajeError);
 		} finally {
 			em.close();
 		}

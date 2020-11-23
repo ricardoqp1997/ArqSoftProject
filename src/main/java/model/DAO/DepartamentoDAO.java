@@ -15,18 +15,18 @@ public class DepartamentoDAO {
 	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private static String ERRORCREAR = "Error al crear departamento";
-	private static String ERRORACTUALIZAR = "Error al actualizar departamento";
-	private static String ERRORELIMINAR = "Error al eliminar departamento";
-	private static final String CODIGOERROR = "10";
+	private static String ERRORCREAR = " Error al crear departamento";
+	private static String ERRORACTUALIZAR = " Error al actualizar departamento";
+	private static String ERRORELIMINAR = " Error al eliminar departamento";
+	private static final String CODIGOERROR = "DAO10";
 
 	public DepartamentoDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
 	}
 
-	public String Create(Departamento departamento) {
-		String mensajeError = ERRORCREAR;
+	public String crearDepartamento(Departamento departamento) {
+		String mensajeError = "";
 		String codError = "";
 
 		try {
@@ -39,17 +39,17 @@ public class DepartamentoDAO {
 			mensajeError += " " + existEntity.getLocalizedMessage() + " " + existEntity.getMessage();
 			codError = CODIGOERROR + " 01";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -58,7 +58,7 @@ public class DepartamentoDAO {
 	}
 
 	public String actualizarDepartamento(int idDepartamento, String nombreDepartamento) {
-		String mensajeError = ERRORACTUALIZAR;
+		String mensajeError = "";
 		String codError = "";
 		try {
 
@@ -69,12 +69,12 @@ public class DepartamentoDAO {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} finally {
 
 			em.close();
@@ -103,7 +103,7 @@ public class DepartamentoDAO {
 
 		Departamento departamento = em.find(Departamento.class, idDepartamento);
 		String codError = "";
-		String mensajeError = ERRORELIMINAR + "con Id: " + idDepartamento + " ";
+		String mensajeError = "";
 		try {
 			em.getTransaction().begin();
 			em.remove(departamento);
@@ -112,12 +112,12 @@ public class DepartamentoDAO {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idDepartamento, mensajeError);
 		} catch (Exception e) {
 			mensajeError += e.getLocalizedMessage() + " " + e.getMessage();
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
-			LogAuditoriaDAO.RegistroLog(codError, mensajeError);
+			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idDepartamento, mensajeError);
 		} finally {
 			em.close();
 		}
