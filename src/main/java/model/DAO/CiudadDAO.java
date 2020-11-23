@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 
 import model.DTO.Ciudad;
 
-public class ciudadDAO {
+public class CiudadDAO {
 	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
@@ -20,7 +20,7 @@ public class ciudadDAO {
 	private static String ERRORELIMINAR = "Error al eliminar ciudad";
 	private static final String CODIGOERROR = "10";
 
-	public ciudadDAO() {
+	public CiudadDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
 	}
