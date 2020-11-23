@@ -46,3 +46,9 @@ CREATE TABLE IF NOT EXISTS Aspirante(
     examen_filename char(100) not null ,
     admitido bool not null
 );
+CREATE TABLE IF NOT EXISTS log_auditoria(
+    id_log int primary key,
+    cod_error varchar(5) not null,
+    mensaje_error varchar(255),
+    hora_error timestamp not null
+);
