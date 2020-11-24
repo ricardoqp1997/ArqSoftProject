@@ -27,7 +27,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPALibrary">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
-			<attribute name="owner.project.facets" value="jst.jsf;jpt.jpa"/>
+			<attribute name="owner.project.facets" value="jst.jsf"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
