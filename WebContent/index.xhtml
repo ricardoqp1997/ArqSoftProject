@@ -11,13 +11,6 @@
 </head>
 <body>
 	<h1>Lista Departamentos</h1>
-	<h:form method="get">
-		<h:selectOneMenu required="true" id="listaDepartamentos"
-			value="#{beanDepartamento.departamento.departamentoId}">
-			<f:selectItem noSelectionOption="true" itemValue="0"
-				itemLabel="-- Seleccione un departamento --" />
-			<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
-		</h:selectOneMenu>
-	</h:form>
+	
 </body>
 </html>
