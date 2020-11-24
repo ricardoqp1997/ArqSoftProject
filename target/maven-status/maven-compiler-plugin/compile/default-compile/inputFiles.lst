@@ -1,4 +1,4 @@
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\controladorDepartamento.java
+E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\ControladorDepartamento.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\LogAuditoria.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\Util.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\CiudadDAO.java
@@ -8,6 +8,7 @@ E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\mode
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\ProgramaDAO.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\AspiranteDAO.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\Consulta.java
+E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\vistas\BeanDepartamento.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\Ciudad.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\DepartamentoDAO.java
 E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\SedeUniversidadDAO.java
