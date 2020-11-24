@@ -11,8 +11,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TransactionRequiredException;
 
-import org.eclipse.persistence.internal.sessions.factories.ObjectPersistenceRuntimeXMLProject_11_1_1.IsSetNullPolicyIsSetParametersAttributeAccessor;
-
 import model.DTO.LogAuditoria;
 
 public class Util {
