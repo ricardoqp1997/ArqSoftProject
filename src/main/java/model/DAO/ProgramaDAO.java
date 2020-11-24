@@ -13,7 +13,7 @@ import model.DTO.Aspirante;
 import model.DTO.Programa;
 
 public class ProgramaDAO {
-	private static final String PERSISTENCEUNITNAME = "AdmisionesUN";
+	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static String ERRORCREAR = "Error al crear programa";

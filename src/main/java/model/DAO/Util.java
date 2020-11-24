@@ -15,7 +15,7 @@ import model.DTO.LogAuditoria;
 
 public class Util {
 
-	private static final String PERSISTENCEUNITNAME = "AdmisionesUN";
+	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static final String CODIGOERROR = "UT9";
 	private static final String DESCRIPCIONERROR = " Error en componente ";
 	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);;

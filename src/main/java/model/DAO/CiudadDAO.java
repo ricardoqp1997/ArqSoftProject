@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import model.DTO.Ciudad;
 
 public class CiudadDAO {
-	private static final String PERSISTENCEUNITNAME = "AdmisionesUN";
+	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static String ERRORCREAR = "Error al crear ciudad";
