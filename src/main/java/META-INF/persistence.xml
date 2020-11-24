@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="SoftwareEngineeringProj">
+	<persistence-unit name="SoftwareEngineeringProj" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.DTO.Aspirante</class>
 		<class>model.DTO.Ciudad</class>
@@ -12,6 +12,7 @@
 		<class>model.DTO.LogAuditoria</class>
 		<class>model.DTO.Programa</class>
 		<class>model.DTO.SedeUniversidad</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:postgresql://ec2-54-158-190-214.compute-1.amazonaws.com:5432/ddnpn18tlv9c0p?sslmode=require&amp;user=oligmnusbsdrej&amp;password=a27cbac9f9827b00bc069e9329aebcb88f83434fbbc66d116e85bd55a364df6c" />
