@@ -52,11 +52,14 @@ public class ControladorDepartamento {
 	}
 
 	public List<Departamento> seleccionarDepartamentos() {
+		Util.CreateLog("00", "Consulta de departamentos",
+				MENSAJEEXITOSO + "\n" + DAODepartamento.buscarTodosDepartamentos());
 		return DAODepartamento.buscarTodosDepartamentos();
 	}
 
 	public List<Ciudad> consultarCiudadesDepartamento(String idDepartamento) {
 		Departamento departamento = DAODepartamento.buscarDepartamentoId(idDepartamento);
+		Util.CreateLog("00", "Consulta de ciudades exitosa", MENSAJEEXITOSO + "\n " + departamento.getCiudads());
 		return departamento.getCiudads();
 
 	}
