@@ -1,0 +1,15 @@
+model\DAO\ProgramaDAO.class
+model\DTO\Programa.class
+model\DAO\CiudadDAO.class
+model\DTO\LogAuditoria.class
+model\DAO\DepartamentoDAO.class
+model\DAO\Util.class
+model\DTO\SedeUniversidad.class
+model\DAO\ConsultaDAO.class
+model\DTO\Consulta.class
+model\DAO\SedeUniversidadDAO.class
+model\DTO\Departamento.class
+model\DTO\Aspirante.class
+controller\controladorDepartamento.class
+model\DAO\AspiranteDAO.class
+model\DTO\Ciudad.class
