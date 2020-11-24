@@ -86,9 +86,12 @@
 			<artifactId>log4j-api</artifactId>
 			<version>${log4j-core.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina 
-			<dependency> <groupId>org.apache.tomcat</groupId> <artifactId>tomcat-catalina</artifactId> 
-			<version>9.0.40</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>9.0.40</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink -->
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
@@ -176,7 +179,7 @@
 						<execution>
 							<phase>package</phase>
 							<goals>
-								<goal>copy-dependencies</goal>
+								<goal>copy</goal>
 							</goals>
 							<configuration>
 								<artifactItems>
