@@ -15,7 +15,7 @@ import model.DTO.LogAuditoria;
 
 public class Util {
 
-	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
+	private static final String PERSISTENCEUNITNAME = "AdmisionesUN";
 	private static final String CODIGOERROR = "UT9";
 	private static final String DESCRIPCIONERROR = " Error en componente ";
 	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);;
@@ -42,15 +42,15 @@ public class Util {
 			existEntity.printStackTrace(new PrintWriter(esw));
 			mensajeError = " " + existEntity.getMessage() + " " + esw.toString();
 			codError += "001";
-			
+
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError = " " + TransactionException.getMessage();
 			codError += "002";
-			
+
 		} catch (Exception e) {
 			mensajeError = " " + e.getMessage();
 			codError += "003";
-			
+
 		}
 		RegistroLog(codError, descError, mensajeError);
 		return codError;
