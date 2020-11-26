@@ -25,13 +25,13 @@ public class AspiranteDAO {
 		em = emf.createEntityManager();
 	}
 
-	public String Create(Aspirante ciudad) {
+	public String Create(Aspirante aspirante) {
 		String mensajeError = "";
 		String codError = "";
 
 		try {
 			em.getTransaction().begin();
-			em.persist(ciudad);
+			em.persist(aspirante);
 			em.getTransaction().commit();
 
 			codError = "0000";

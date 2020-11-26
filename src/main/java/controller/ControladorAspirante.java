@@ -24,6 +24,35 @@ public class ControladorAspirante {
 		DAOAspirante = new AspiranteDAO();
 	}
 
+	public String crearAspirante(Integer idAspirante, String nombreAspirante, String apellidoAspirante,
+			Boolean admitido, Integer cedulaAspirante, Programa programa, String examenFilename,
+			SedeUniversidad sedeUniversidad, Integer qrcodeAspirante, List<Consulta> consultas, Ciudad ciudad,
+			Integer edadAspirante, String sexoAspirante) {
+		try {
+
+			Aspirante aspirante = new Aspirante();
+			aspirante.setNombreAspirante(nombreAspirante);
+			aspirante.setAdmitido(admitido);
+			aspirante.setApellidoAspirante(apellidoAspirante);
+			aspirante.setCedulaAspirante(cedulaAspirante);
+			aspirante.setCiudad(ciudad);
+			aspirante.setConsultas(consultas);
+			aspirante.setEdadAspirante(edadAspirante);
+			aspirante.setExamenFilename(examenFilename);
+			aspirante.setPrograma(programa);
+			aspirante.setSexoAspirante(sexoAspirante);
+			aspirante.setQrcodeAspirante(qrcodeAspirante);
+			aspirante.setSedeUniversidad(sedeUniversidad);
+			codError = DAOAspirante.Create(aspirante);
+			descError = (codError == "0000" ? MENSAJEEXITOSO : DESCRIPCIONERROR);
+		} catch (Exception e) {
+			codError = "03";
+			mensajeError += " " + e.getMessage();
+		}
+		Util.CreateLog(codError, descError, mensajeError);
+		return codError;
+	}
+
 	public String actualizarAspirante(Integer idAspirante, String nombreAspirante, String apellidoAspirante,
 			Boolean admitido, Integer cedulaAspirante, Programa programa, String examenFilename,
 			SedeUniversidad sedeUniversidad, Integer qrcodeAspirante, List<Consulta> consultas, Ciudad ciudad,
@@ -51,10 +80,59 @@ public class ControladorAspirante {
 			aspirantemodificar.setSedeUniversidad(
 					sedeUniversidad == null ? aspirantemodificar.getSedeUniversidad() : sedeUniversidad);
 			codError = DAOAspirante.actualizarAspirante(aspirantemodificar);
-			mensajeError = MENSAJEEXITOSO;
+
+			descError = (codError == "0000" ? MENSAJEEXITOSO : DESCRIPCIONERROR);
 		} catch (Exception e) {
 			codError = "03";
 			mensajeError += " " + e.getMessage();
+		}
+		Util.CreateLog(codError, descError, mensajeError);
+		return codError;
+	}
+
+	public Aspirante consultarAspirante(Integer cedula) {
+
+		try {
+			Aspirante d = DAOAspirante.buscarAspiranteId(cedula);
+			codError = "0000";
+			descError = MENSAJEEXITOSO + "en Consulta de aspirante";
+			mensajeError = "Consulta exitosa " + d.getCedulaAspirante();
+			return d;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
+	}
+
+	public List<Aspirante> buscarTodosAspirantes() {
+
+		try {
+			List<Aspirante> d = DAOAspirante.buscarTodosAspirantes();
+			codError = "0000";
+			descError = MENSAJEEXITOSO;
+			mensajeError = "Consulta exitosa " + d.size() + " Aspirantes registrados";
+			return d;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
+	}
+
+	public String EliminarAspirante(int id) {
+		try {
+			codError = DAOAspirante.eliminarAspirante(id);
+
+			descError = MENSAJEEXITOSO + "en eliminar departamento " + id;
+			mensajeError = codError == "0000" ? "Consulta exitosa " + id : "Fallo al eliminar el departamento " + id;
+		} catch (Exception e) {
+			codError = "103";
+			mensajeError = e.getMessage();
 		}
 		Util.CreateLog(codError, descError, mensajeError);
 		return codError;

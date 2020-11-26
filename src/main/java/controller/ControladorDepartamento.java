@@ -31,7 +31,7 @@ public class ControladorDepartamento {
 			codError = DAODepartamento.crearDepartamento(departamento);
 
 			mensajeError = "Se ha creado correctamente el departamento " + nombreDepartamento;
-			descError = MENSAJEEXITOSO;
+			descError = (codError == "0000" ? MENSAJEEXITOSO : DESCRIPCIONERROR);
 		} catch (NullPointerException e) {
 			codError += "004";
 			mensajeError += " " + e.getMessage();
@@ -44,29 +44,84 @@ public class ControladorDepartamento {
 	}
 
 	public Departamento seleccionarDepartamentoId(int id) {
-		return DAODepartamento.buscarDepartamentoId(id);
+		try {
+			Departamento d = DAODepartamento.buscarDepartamentoId(id);
+			codError = "0000";
+			descError = MENSAJEEXITOSO + "en Consulta Departamento";
+			mensajeError = "Consulta exitosa " + d.getNombreDepartamento();
+			return d;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
+
 	}
 
 	public Departamento seleccionarDepartamentoNombre(String nombre) {
-		return DAODepartamento.buscarDepartamentoId(nombre);
+
+		try {
+			Departamento d = DAODepartamento.buscarDepartamentoId(nombre);
+			codError = "0000";
+			descError = MENSAJEEXITOSO + "en Consulta Departamento";
+			mensajeError = "Consulta exitosa " + d.getNombreDepartamento();
+			return d;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
+
 	}
 
 	public List<Departamento> seleccionarDepartamentos() {
-		Util.CreateLog("0000", "Consulta de departamentos",
-				MENSAJEEXITOSO + "\n" + DAODepartamento.buscarTodosDepartamentos());
-		return DAODepartamento.buscarTodosDepartamentos();
+
+		try {
+			List<Departamento> d = DAODepartamento.buscarTodosDepartamentos();
+			codError = "0000";
+			descError = MENSAJEEXITOSO + "en Consulta Departamentos";
+			mensajeError = "Consulta exitosa " + d.size() + " departamentos";
+			return d;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
+
 	}
 
 	public List<Ciudad> consultarCiudadesDepartamento(String idDepartamento) {
-		Departamento departamento = DAODepartamento.buscarDepartamentoId(idDepartamento);
-		Util.CreateLog("0000", "Consulta de ciudades exitosa", MENSAJEEXITOSO + "\n " + departamento.getCiudads());
-		return departamento.getCiudads();
+
+		try {
+			List<Ciudad> d = DAODepartamento.buscarDepartamentoId(idDepartamento).getCiudads();
+			codError = "0000";
+			descError = MENSAJEEXITOSO;
+			mensajeError = "Consulta de ciudades del departamento"
+					+ DAODepartamento.buscarDepartamentoId(idDepartamento).getNombreDepartamento();
+			return d;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
 
 	}
 
 	public String EliminarDepartamento(int id) {
 		try {
+			String departamento = DAODepartamento.buscarDepartamentoId(id).getNombreDepartamento();
 			codError = DAODepartamento.eliminarDepartamento(id);
+			descError = MENSAJEEXITOSO + "en eliminar departamento " + departamento;
+			mensajeError = codError == "0000" ? "Consulta exitosa " + departamento
+					: "Fallo al eliminar el departamento " + departamento;
 
 		} catch (Exception e) {
 			codError = "103";
