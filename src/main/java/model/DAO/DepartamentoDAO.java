@@ -47,7 +47,7 @@ public class DepartamentoDAO {
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
-			codError = CODIGOERROR + "03";
+			codError = CODIGOERROR + "103";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
 		} finally {
@@ -65,6 +65,7 @@ public class DepartamentoDAO {
 			em.getTransaction().begin();
 			Departamento departamentomodificar = em.find(Departamento.class, idDepartamento);
 			departamentomodificar.setNombreDepartamento(nombreDepartamento);
+			codError = "0000";
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
@@ -72,7 +73,7 @@ public class DepartamentoDAO {
 			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} catch (Exception e) {
 			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
-			codError = CODIGOERROR + "03";
+			codError = CODIGOERROR + "103";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
 		} finally {
@@ -108,6 +109,7 @@ public class DepartamentoDAO {
 			em.getTransaction().begin();
 			em.remove(departamento);
 			em.getTransaction().commit();
+			codError = "0000";
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";
@@ -115,7 +117,7 @@ public class DepartamentoDAO {
 			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idDepartamento, mensajeError);
 		} catch (Exception e) {
 			mensajeError += e.getLocalizedMessage() + " " + e.getMessage();
-			codError = CODIGOERROR + "03";
+			codError = CODIGOERROR + "103";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idDepartamento, mensajeError);
 		} finally {

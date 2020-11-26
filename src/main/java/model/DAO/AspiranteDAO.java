@@ -10,10 +10,6 @@ import javax.persistence.TransactionRequiredException;
 import javax.persistence.TypedQuery;
 
 import model.DTO.Aspirante;
-import model.DTO.Ciudad;
-import model.DTO.Consulta;
-import model.DTO.Programa;
-import model.DTO.SedeUniversidad;
 
 public class AspiranteDAO {
 	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
@@ -61,36 +57,15 @@ public class AspiranteDAO {
 		return codError;
 	}
 
-	public String actualizarAspiranteNombre(Integer idAspirante, String nombreAspirante, String apellidoAspirante,
-			Boolean admitido, Integer cedulaAspirante, Programa programa, String examenFilename,
-			SedeUniversidad sedeUniversidad, Integer qrcodeAspirante, List<Consulta> consultas, Ciudad ciudad,
-			Integer edadAspirante, String sexoAspirante) {
+	public String actualizarAspirante(Aspirante aspirante) {
 		String mensajeError = "";
 		String codError = "";
 		try {
 
 			em.getTransaction().begin();
-			Aspirante aspirantemodificar = em.find(Aspirante.class, idAspirante);
-			aspirantemodificar.setNombreAspirante(
-					nombreAspirante == null ? aspirantemodificar.getNombreAspirante() : nombreAspirante);
-			aspirantemodificar.setAdmitido(admitido == null ? aspirantemodificar.getAdmitido() : admitido);
-			aspirantemodificar.setApellidoAspirante(
-					apellidoAspirante == null ? aspirantemodificar.getApellidoAspirante() : apellidoAspirante);
-			aspirantemodificar.setCedulaAspirante(
-					cedulaAspirante == null ? aspirantemodificar.getCedulaAspirante() : cedulaAspirante);
-			aspirantemodificar.setCiudad(ciudad == null ? aspirantemodificar.getCiudad() : ciudad);
-			aspirantemodificar.setConsultas(consultas == null ? aspirantemodificar.getConsultas() : consultas);
-			aspirantemodificar
-					.setEdadAspirante(edadAspirante == null ? aspirantemodificar.getEdadAspirante() : edadAspirante);
-			aspirantemodificar.setExamenFilename(
-					examenFilename == null ? aspirantemodificar.getExamenFilename() : examenFilename);
-			aspirantemodificar.setPrograma(programa == null ? aspirantemodificar.getPrograma() : programa);
-			aspirantemodificar
-					.setSexoAspirante(sexoAspirante == null ? aspirantemodificar.getSexoAspirante() : sexoAspirante);
-			aspirantemodificar.setQrcodeAspirante(
-					qrcodeAspirante == null ? aspirantemodificar.getQrcodeAspirante() : qrcodeAspirante);
-			aspirantemodificar.setSedeUniversidad(
-					sedeUniversidad == null ? aspirantemodificar.getSedeUniversidad() : sedeUniversidad);
+			em.merge(aspirante);
+			em.getTransaction().commit();
+			codError = "0000";
 		} catch (TransactionRequiredException TransactionException) {
 			mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
 			codError = CODIGOERROR + "02";

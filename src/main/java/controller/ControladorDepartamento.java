@@ -9,14 +9,14 @@ import model.DTO.Departamento;
 
 public class ControladorDepartamento {
 	private static DepartamentoDAO DAODepartamento;
-	private static final String CODIGOERROR = "DE0";
+	private static final String CODIGOERROR = "CD";
 	private static final String DESCRIPCIONERROR = " Error en controlador de departamento ";
 	private static final String tabla = "Departamento";
 	private static final String llavetabla = "departamentoId";
 	private static final String MENSAJEEXITOSO = "Transaccion Exitosa";
-	String codError = CODIGOERROR;
-	String descError = DESCRIPCIONERROR;
-	String mensajeError = "";
+	private static String codError = CODIGOERROR;
+	private static String descError = DESCRIPCIONERROR;
+	private static String mensajeError = "";
 
 	public ControladorDepartamento() {
 		DAODepartamento = new DepartamentoDAO();
@@ -28,16 +28,16 @@ public class ControladorDepartamento {
 			Departamento departamento = new Departamento();
 			departamento.setDepartamentoId(Util.getMaxIDd(tabla, llavetabla));
 			departamento.setNombreDepartamento(nombreDepartamento.toUpperCase());
-			DAODepartamento.crearDepartamento(departamento);
-			codError = "00";
+			codError = DAODepartamento.crearDepartamento(departamento);
+
 			mensajeError = "Se ha creado correctamente el departamento " + nombreDepartamento;
 			descError = MENSAJEEXITOSO;
 		} catch (NullPointerException e) {
-			codError += "01";
+			codError += "004";
 			mensajeError += " " + e.getMessage();
 		} catch (Exception e) {
 			mensajeError += " " + e.getMessage();
-			codError += "02";
+			codError += "103";
 		}
 		Util.CreateLog(codError, descError, mensajeError);
 		return codError;
@@ -52,24 +52,24 @@ public class ControladorDepartamento {
 	}
 
 	public List<Departamento> seleccionarDepartamentos() {
-		Util.CreateLog("00", "Consulta de departamentos",
+		Util.CreateLog("0000", "Consulta de departamentos",
 				MENSAJEEXITOSO + "\n" + DAODepartamento.buscarTodosDepartamentos());
 		return DAODepartamento.buscarTodosDepartamentos();
 	}
 
 	public List<Ciudad> consultarCiudadesDepartamento(String idDepartamento) {
 		Departamento departamento = DAODepartamento.buscarDepartamentoId(idDepartamento);
-		Util.CreateLog("00", "Consulta de ciudades exitosa", MENSAJEEXITOSO + "\n " + departamento.getCiudads());
+		Util.CreateLog("0000", "Consulta de ciudades exitosa", MENSAJEEXITOSO + "\n " + departamento.getCiudads());
 		return departamento.getCiudads();
 
 	}
 
 	public String EliminarDepartamento(int id) {
 		try {
-			DAODepartamento.eliminarDepartamento(id);
-			codError = "00";
+			codError = DAODepartamento.eliminarDepartamento(id);
+
 		} catch (Exception e) {
-			codError = "04";
+			codError = "103";
 			mensajeError = e.getMessage();
 		}
 		Util.CreateLog(codError, descError, mensajeError);
