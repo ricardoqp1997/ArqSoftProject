@@ -62,7 +62,7 @@ public class ConsultaDAO {
 		return consultas;
 	}
 
-	public Consulta buscarConsultaId(int idConsulta) {
+	public Consulta buscarConsultaId(String idConsulta) {
 		Consulta consulta = em.find(Consulta.class, idConsulta);
 		return consulta;
 	}

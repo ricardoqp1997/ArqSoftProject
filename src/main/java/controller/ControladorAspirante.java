@@ -11,7 +11,7 @@ import model.DTO.Programa;
 import model.DTO.SedeUniversidad;
 
 public class ControladorAspirante {
-	AspiranteDAO DAOAspirante;
+	private static AspiranteDAO DAOAspirante;
 
 	private static final String CODIGOERROR = "CA";
 	private static final String DESCRIPCIONERROR = " Error en controlador de departamento ";
