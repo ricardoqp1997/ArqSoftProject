@@ -14,7 +14,7 @@ public class ControladorAspirante {
 	private static AspiranteDAO DAOAspirante;
 
 	private static final String CODIGOERROR = "CA";
-	private static final String DESCRIPCIONERROR = " Error en controlador de departamento ";
+	private static final String DESCRIPCIONERROR = " Error en controlador de aspirante ";
 	private static final String MENSAJEEXITOSO = "Transaccion Exitosa";
 	private static String codError = CODIGOERROR;
 	private static String descError = DESCRIPCIONERROR;
@@ -128,8 +128,8 @@ public class ControladorAspirante {
 		try {
 			codError = DAOAspirante.eliminarAspirante(id);
 
-			descError = MENSAJEEXITOSO + "en eliminar departamento " + id;
-			mensajeError = codError == "0000" ? "Consulta exitosa " + id : "Fallo al eliminar el departamento " + id;
+			descError = MENSAJEEXITOSO + "en eliminar aspirante " + id;
+			mensajeError = codError == "0000" ? "Consulta exitosa " + id : "Fallo al eliminar el aspirante " + id;
 		} catch (Exception e) {
 			codError = "103";
 			mensajeError = e.getMessage();

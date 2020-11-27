@@ -12,7 +12,7 @@ import model.DTO.Consulta;
 public class ControladorConsulta {
 	private static ConsultaDAO DAOConsulta;
 	private static final String CODIGOERROR = "CCON";
-	private static final String DESCRIPCIONERROR = " Error en controlador de departamento ";
+	private static final String DESCRIPCIONERROR = " Error en controlador de consultas ";
 	private static final String MENSAJEEXITOSO = "Transaccion Exitosa";
 	private static String codError = CODIGOERROR;
 	private static String descError = DESCRIPCIONERROR;
@@ -64,7 +64,7 @@ public class ControladorConsulta {
 			List<Consulta> d = DAOConsulta.buscarTodosConsultas();
 			codError = "0000";
 			descError = MENSAJEEXITOSO;
-			mensajeError = "Consulta exitosa " + d.size() + " Consultas registrados";
+			mensajeError = "Consulta exitosa " + d.size() + " Consultas registradas";
 			return d;
 		} catch (Exception e) {
 			mensajeError += " " + e.getMessage();
