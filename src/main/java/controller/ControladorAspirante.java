@@ -11,14 +11,17 @@ import model.DTO.Programa;
 import model.DTO.SedeUniversidad;
 
 public class ControladorAspirante {
-	AspiranteDAO DAOAspirante;
+	private static AspiranteDAO DAOAspirante;
 
 	private static final String CODIGOERROR = "CA";
-	private static final String DESCRIPCIONERROR = " Error en controlador de departamento ";
+	private static final String DESCRIPCIONERROR = " Error en controlador de aspirante ";
 	private static final String MENSAJEEXITOSO = "Transaccion Exitosa";
 	private static String codError = CODIGOERROR;
 	private static String descError = DESCRIPCIONERROR;
 	private static String mensajeError = "";
+
+	private List<Aspirante> admitidos;
+	private List<Aspirante> noAdmitidos;
 
 	public ControladorAspirante() {
 		DAOAspirante = new AspiranteDAO();
@@ -128,13 +131,59 @@ public class ControladorAspirante {
 		try {
 			codError = DAOAspirante.eliminarAspirante(id);
 
-			descError = MENSAJEEXITOSO + "en eliminar departamento " + id;
-			mensajeError = codError == "0000" ? "Consulta exitosa " + id : "Fallo al eliminar el departamento " + id;
+			descError = MENSAJEEXITOSO + "en eliminar aspirante " + id;
+			mensajeError = codError == "0000" ? "Consulta exitosa " + id : "Fallo al eliminar el aspirante " + id;
 		} catch (Exception e) {
 			codError = "103";
 			mensajeError = e.getMessage();
 		}
 		Util.CreateLog(codError, descError, mensajeError);
 		return codError;
+	}
+
+	public List<Aspirante> estudiantesAdmitidos() {
+
+		try {
+			List<Aspirante> aspirantes = DAOAspirante.buscarTodosAspirantes();
+
+			for (Aspirante a : aspirantes) {
+				if (a.getAdmitido() == true) {
+					admitidos.add(a);
+				}
+			}
+			codError = "0000";
+			descError = MENSAJEEXITOSO;
+			mensajeError = "Consulta exitosa " + admitidos.size() + " Aspirantes admitidos";
+			return admitidos;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
+	}
+
+	public List<Aspirante> estudiantesNoAdmitidos() {
+
+		try {
+			List<Aspirante> aspirantes = DAOAspirante.buscarTodosAspirantes();
+
+			for (Aspirante a : aspirantes) {
+				if (a.getAdmitido() == false) {
+					noAdmitidos.add(a);
+				}
+			}
+			codError = "0000";
+			descError = MENSAJEEXITOSO;
+			mensajeError = "Consulta exitosa " + noAdmitidos.size() + " Aspirantes no admitidos";
+			return noAdmitidos;
+		} catch (Exception e) {
+			mensajeError += " " + e.getMessage();
+			codError += "103";
+			return null;
+		} finally {
+			Util.CreateLog(codError, descError, mensajeError);
+		}
 	}
 }

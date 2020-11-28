@@ -84,9 +84,18 @@ public class DepartamentoDAO {
 	}
 
 	public List<Departamento> buscarTodosDepartamentos() {
-		TypedQuery<Departamento> seleccionarDepartamentos = em.createNamedQuery("Departamento.findAll",
-				Departamento.class);
-		List<Departamento> departamentos = seleccionarDepartamentos.getResultList();
+		String mensajeError = "";
+		String codError = "";
+		List<Departamento> departamentos = null;
+		try {
+			TypedQuery<Departamento> seleccionarDepartamentos = em.createNamedQuery("Departamento.findAll",
+					Departamento.class);
+			departamentos = seleccionarDepartamentos.getResultList();
+		} catch (Exception e) {
+			mensajeError += " " + e.getLocalizedMessage() + " " + e.getMessage();
+			codError = CODIGOERROR + "103";
+			Util.CreateLog(codError, "Error en la consulta", mensajeError);
+		}
 		return departamentos;
 	}
 
