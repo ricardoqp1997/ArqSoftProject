@@ -1,17 +1,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
-		<ui:composition template="/plantillas/base.xhtml">
-			<ui:define name="titulo">
-				<h:outputText value="Departamento"/>
-			</ui:define>
-			<ui:define name="content">
-				<h1>Lista Departamentos</h1>
-				<h:form method="get">
-					<h:selectOneMenu required="true" id="listaDepartamentos" value="#{beanDepartamento.departamento.departamentoId}">
-						<f:selectItem noSelectionOption="true" itemValue="0" itemLabel="-- Seleccione un departamento --"/>
-						<f:selectItems value="#{beanDepartamento.listaDepartamentos}"/>
-					</h:selectOneMenu>
-				</h:form>
-			</ui:define>
-		</ui:composition>
-	</html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/plantillas/base.xhtml">
+	<ui:define name="titulo">
+		<h:outputText value="Departamento" />
+	</ui:define>
+	<ui:define name="content">
+		<h1>Lista Departamentos</h1>
+		<h:form method="get">
+			<h:selectOneMenu required="true" id="listaDepartamentos"
+				value="#{beanDepartamento.departamento.departamentoId}">
+				<f:selectItem noSelectionOption="true" itemValue="0"
+					itemLabel="-- Seleccione un departamento --" />
+				<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
+			</h:selectOneMenu>
+			<span style="width: 20px" />
+			<h:commandButton styleClass="btn -btn-success" style="width:120px"
+				action="#{beanDepartamento.submit}" />
+			<div id="error-message">
+				<span style="width: auto;"><h:message
+						for="listaDepartamentos" style="color: red;" /> </span>
+			</div>
+			<div class="row">
+				<div class="col-md-auto">
+					<dvi class="form-group"> <h:form clas="form-inline"
+						id="formularioCiudades">
+						<div class="table-responsive-sm">
+							<h:dataTable id="tablaCiudades"
+								value="#{beanDepartamento.ciudades}"
+								var="ciudad"
+								styleClass="table table-bordered table-hover table-sm table-light table-striped"
+								headerClass="thead-light bg-dark text-white" style="width:auto">
+								<h:column>
+									<f:facet name="header">Ciudad</f:facet>
+										#{}
+									</h:column>
+								
+							</h:dataTable>
+						</div>
+					</h:form> </dvi>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

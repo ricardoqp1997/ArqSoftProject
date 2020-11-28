@@ -6,9 +6,9 @@ import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
-
 import controller.ControladorDepartamento;
 import model.DAO.Util;
+import model.DTO.Ciudad;
 import model.DTO.Departamento;
 
 @ManagedBean
@@ -16,6 +16,7 @@ import model.DTO.Departamento;
 public class BeanDepartamento {
 	private Departamento departamento;
 	private List<SelectItem> listaDepartamentos;
+	private List<Ciudad> ciudades;
 	private ControladorDepartamento controladorDepartamento;
 	private static final String CODIGOERROR = "BED0";
 	private static final String DESCRIPCIONERROR = " Error en bean Departamento ";
@@ -30,6 +31,14 @@ public class BeanDepartamento {
 
 	public Departamento getDepartamento() {
 		return departamento;
+	}
+
+	public List<Ciudad> getCiudades() {
+		return ciudades;
+	}
+
+	public void setCiudades(List<Ciudad> ciudades) {
+		this.ciudades = ciudades;
 	}
 
 	public List<SelectItem> getlistaDepartamentos() {
@@ -50,6 +59,11 @@ public class BeanDepartamento {
 			System.err.println(e.getMessage());
 		}
 		return this.listaDepartamentos;
+	}
+
+	public void submit() {
+		this.setCiudades(this.getDepartamento().getCiudads());
+
 	}
 
 }
