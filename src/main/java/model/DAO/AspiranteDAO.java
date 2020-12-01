@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import model.DTO.Aspirante;
 
 public class AspiranteDAO {
-	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
+	private static final String PERSISTENCEUNITNAME = "AdmisionesUN";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static final String ERRORCREAR = "Error al crear aspirante";

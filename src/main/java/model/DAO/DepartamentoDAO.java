@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import model.DTO.Departamento;
 
 public class DepartamentoDAO {
-	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
+	private static final String PERSISTENCEUNITNAME = "AdmisionesUN";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static String ERRORCREAR = " Error al crear departamento";
