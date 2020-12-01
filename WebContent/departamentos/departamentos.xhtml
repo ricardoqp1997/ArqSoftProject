@@ -19,29 +19,30 @@
 			</h:selectOneMenu>
 			<span style="width: 20px" />
 			<h:commandButton styleClass="btn -btn-success" style="width:120px"
-				action="#{beanDepartamento.submit}" />
+				action="#{beanDepartamento.submit}" value="Consultar" />
 			<div id="error-message">
 				<span style="width: auto;"><h:message
 						for="listaDepartamentos" style="color: red;" /> </span>
 			</div>
 			<div class="row">
 				<div class="col-md-auto">
-					<dvi class="form-group"> <h:form clas="form-inline"
-						id="formularioCiudades">
-						<div class="table-responsive-sm">
-							<h:dataTable id="tablaCiudades"
-								value="#{beanDepartamento.ciudades}"
-								var="ciudad"
-								styleClass="table table-bordered table-hover table-sm table-light table-striped"
-								headerClass="thead-light bg-dark text-white" style="width:auto">
-								<h:column>
-									<f:facet name="header">Ciudad</f:facet>
-										
+					<div class="form-group">
+						<h:form clas="form-inline" id="formularioCiudades">
+							<div class="table-responsive-sm">
+								<h:dataTable id="tablaCiudades"
+									value="#{beanDepartamento.ciudades}" var="ciudad"
+									styleClass="table table-bordered table-hover table-sm table-light table-striped"
+									headerClass="thead-light bg-dark text-white" style="width:auto">
+									<h:column>
+										<f:facet name="header">Ciudad</f:facet>
+										#{ciudad.nombreCiudad}
+
 									</h:column>
-								
-							</h:dataTable>
-						</div>
-					</h:form> </dvi>
+
+								</h:dataTable>
+							</div>
+						</h:form>
+					</div>
 				</div>
 			</div>
 		</h:form>

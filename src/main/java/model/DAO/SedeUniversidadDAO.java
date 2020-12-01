@@ -14,7 +14,7 @@ import model.DTO.Ciudad;
 import model.DTO.SedeUniversidad;
 
 public class SedeUniversidadDAO {
-	private static final String PERSISTENCEUNITNAME = "SoftwareEngineeringProj";
+	private static final String PERSISTENCEUNITNAME = "AdmisionesUN";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static String ERRORCREAR = "Error al crear sede";

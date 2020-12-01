@@ -37,7 +37,7 @@ public class ControladorConsulta {
 			codError = "03";
 			mensajeError += " " + e.getMessage();
 		}
-		Util.CreateLog(codError, descError, mensajeError);
+		Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		return codError;
 	}
 
@@ -54,7 +54,7 @@ public class ControladorConsulta {
 			codError += "103";
 			return null;
 		} finally {
-			Util.CreateLog(codError, descError, mensajeError);
+			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		}
 	}
 
@@ -71,7 +71,7 @@ public class ControladorConsulta {
 			codError += "103";
 			return null;
 		} finally {
-			Util.CreateLog(codError, descError, mensajeError);
+			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		}
 	}
 }

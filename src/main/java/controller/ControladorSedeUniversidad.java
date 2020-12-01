@@ -39,7 +39,7 @@ public class ControladorSedeUniversidad {
 			mensajeError += " " + e.getMessage();
 			codError += "103";
 		}
-		Util.CreateLog(codError, descError, mensajeError);
+		Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		return codError;
 	}
 
@@ -55,7 +55,7 @@ public class ControladorSedeUniversidad {
 			codError += "103";
 			return null;
 		} finally {
-			Util.CreateLog(codError, descError, mensajeError);
+			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		}
 
 	}
@@ -73,7 +73,7 @@ public class ControladorSedeUniversidad {
 			codError += "103";
 			return null;
 		} finally {
-			Util.CreateLog(codError, descError, mensajeError);
+			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		}
 
 	}
@@ -91,7 +91,7 @@ public class ControladorSedeUniversidad {
 			codError += "103";
 			return null;
 		} finally {
-			Util.CreateLog(codError, descError, mensajeError);
+			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		}
 
 	}
@@ -110,7 +110,7 @@ public class ControladorSedeUniversidad {
 			codError += "103";
 			return null;
 		} finally {
-			Util.CreateLog(codError, descError, mensajeError);
+			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		}
 
 	}
@@ -126,7 +126,7 @@ public class ControladorSedeUniversidad {
 			codError = "103";
 			mensajeError = e.getMessage();
 		}
-		Util.CreateLog(codError, descError, mensajeError);
+		Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		return codError;
 	}
 }

@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
@@ -16,11 +17,11 @@ import model.DTO.Departamento;
 public class BeanDepartamento {
 	private Departamento departamento;
 	private List<SelectItem> listaDepartamentos;
-	private List<Ciudad> ciudades;
+	private LinkedList<Ciudad> ciudades;
 	private ControladorDepartamento controladorDepartamento;
 	private static final String CODIGOERROR = "BED0";
 	private static final String DESCRIPCIONERROR = " Error en bean Departamento ";
-	private static final String MENSAJEEXITOSO = "Transaccion Exitosa";
+	private static final String MENSAJEEXITOSO = "Transaccion Exitosa ";
 	String codError = CODIGOERROR;
 	String descError = DESCRIPCIONERROR;
 	String mensajeError = "";
@@ -37,7 +38,7 @@ public class BeanDepartamento {
 		return ciudades;
 	}
 
-	public void setCiudades(List<Ciudad> ciudades) {
+	public void setCiudades(LinkedList<Ciudad> ciudades) {
 		this.ciudades = ciudades;
 	}
 
@@ -52,17 +53,31 @@ public class BeanDepartamento {
 						departamentos.getNombreDepartamento());
 				this.listaDepartamentos.add(departamentoOpcion);
 			}
-			Util.CreateLog(codError, MENSAJEEXITOSO, descError);
+			Util.CreateLog(codError + "00", MENSAJEEXITOSO, "Consulta Exitosa en Bean Departamento");
 		} catch (Exception e) {
 			codError += "03";
-			Util.CreateLog(codError, DESCRIPCIONERROR, e.getMessage());
-			System.err.println(e.getMessage());
+			Util.CreateLog(CODIGOERROR + codError, DESCRIPCIONERROR, e.getMessage());
 		}
 		return this.listaDepartamentos;
 	}
 
-	public void submit() {
-		this.setCiudades(this.getDepartamento().getCiudads());
+	public String submit() {
+		try {
+			for (Ciudad c : this.getDepartamento().getCiudads()) {
+				ciudades.add(c);
+				System.out.println(c.getNombreCiudad());
+			}
+			
+			codError = "0000";
+			mensajeError = "Transacción Exitosa en Submit";
+			descError = "Transacción exitosa";
+		} catch (Exception e) {
+			codError = "0000";
+			mensajeError = "Error en submit " + e.getMessage();
+		} finally {
+			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
+		}
+		return "hola";
 
 	}
 
