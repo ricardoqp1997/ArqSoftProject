@@ -60,17 +60,6 @@ public class Util {
 		return codError;
 	}
 
-	/*
-	 * private Properties leerPropiedades() { FileReader fr; try { String
-	 * currenteRelativePath = Paths.get("").toAbsolutePath().toString() +
-	 * "\\src\\main\\java\\model\\DAO\\"; fr = new FileReader(currenteRelativePath +
-	 * "db.properties"); Properties properties = new Properties();
-	 * properties.load(fr); return properties; } catch (FileNotFoundException e) {
-	 * System.out.println("No se puede encontrar el archivo"); return null; } catch
-	 * (IOException e) { // TODO Auto-generated catch block
-	 * 
-	 * return null; } }
-	 */
 	public static String RegistroLog(String codError, String mensajeError, String descError) {
 		int maxId = 0;
 		try {

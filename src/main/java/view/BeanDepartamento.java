@@ -65,7 +65,6 @@ public class BeanDepartamento {
 		try {
 			for (Ciudad c : this.getDepartamento().getCiudads()) {
 				ciudades.add(c);
-				System.out.println(c.getNombreCiudad());
 			}
 			
 			codError = "0000";
@@ -77,7 +76,7 @@ public class BeanDepartamento {
 		} finally {
 			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
 		}
-		return "hola";
+		return "Exitoso";
 
 	}
 
