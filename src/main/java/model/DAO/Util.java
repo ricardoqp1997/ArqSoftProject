@@ -39,7 +39,7 @@ public class Util {
 			em.persist(log);
 			em.getTransaction().commit();
 			em.close();
-			codError = "0000";
+			codError = Error;
 			mensajeError = Mensaje;
 		} catch (EntityExistsException existEntity) {
 			StringWriter esw = new StringWriter();
