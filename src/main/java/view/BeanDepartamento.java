@@ -34,7 +34,7 @@ public class BeanDepartamento {
 		return departamento;
 	}
 
-	public List<Ciudad> getCiudades() {
+	public LinkedList<Ciudad> getCiudades() {
 		return ciudades;
 	}
 
