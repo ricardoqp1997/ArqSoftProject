@@ -7,8 +7,10 @@
 	<version>V3.0</version>
 	<packaging>war</packaging>
 	<name>AdmisionesUN</name>
+	<!-- FIXME change it to the project's website -->
 	<description>Plataforma Web</description>
-	<url>http://locahost:8080/AdmisionesUN</url>
+	<url>https://admisionesun.herokuapp.com/</url>
+
 	<properties>
 		<eclipselink.version>2.5.0</eclipselink.version>
 		<junit.version>4.12</junit.version>
@@ -141,10 +143,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 		<pluginManagement>
 			<plugins>
+				<!-- Plugins necesarios para el despligue en Heroku -->
 				<plugin>
 					<groupId>com.heroku.sdk</groupId>
 					<artifactId>heroku-maven-plugin</artifactId>
