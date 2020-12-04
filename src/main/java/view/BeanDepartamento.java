@@ -1,11 +1,12 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 import controller.ControladorDepartamento;
 import model.DAO.Util;
@@ -17,32 +18,38 @@ import model.DTO.Departamento;
 public class BeanDepartamento {
 	private Departamento departamento;
 	private List<SelectItem> listaDepartamentos;
-	private LinkedList<Ciudad> ciudades;
+	private List<Ciudad> ciudades;
 	private ControladorDepartamento controladorDepartamento;
 	private static final String CODIGOERROR = "BED0";
 	private static final String DESCRIPCIONERROR = " Error en bean Departamento ";
 	private static final String MENSAJEEXITOSO = "Transaccion Exitosa ";
-	String codError = CODIGOERROR;
-	String descError = DESCRIPCIONERROR;
-	String mensajeError = "";
+	private static String codError = CODIGOERROR;
+	private static String descError = DESCRIPCIONERROR;
+	private static String mensajeError = "";
 
 	public BeanDepartamento() {
 		departamento = new Departamento();
+		ciudades = new ArrayList<Ciudad>();
+		controladorDepartamento = new ControladorDepartamento();
 	}
 
 	public Departamento getDepartamento() {
 		return departamento;
 	}
 
-	public LinkedList<Ciudad> getCiudades() {
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public List<Ciudad> getCiudades() {
 		return ciudades;
 	}
 
-	public void setCiudades(LinkedList<Ciudad> ciudades) {
+	public void setCiudades(List<Ciudad> ciudades) {
 		this.ciudades = ciudades;
 	}
 
-	public List<SelectItem> getlistaDepartamentos() {
+	public List<SelectItem> getListaDepartamentos() {
 		try {
 			this.listaDepartamentos = new ArrayList<SelectItem>();
 			controladorDepartamento = new ControladorDepartamento();
@@ -58,15 +65,16 @@ public class BeanDepartamento {
 			codError += "03";
 			Util.CreateLog(CODIGOERROR + codError, DESCRIPCIONERROR, e.getMessage());
 		}
-		return this.listaDepartamentos;
+		return listaDepartamentos;
 	}
 
 	public String submit() {
 		try {
-			for (Ciudad c : this.getDepartamento().getCiudads()) {
+			departamento = controladorDepartamento.seleccionarDepartamentoId(departamento.getDepartamentoId());
+			System.out.println(departamento.getNombreDepartamento());
+			for (Ciudad c : departamento.getCiudads()) {
 				ciudades.add(c);
 			}
-			
 			codError = "0000";
 			mensajeError = "Transacción Exitosa en Submit";
 			descError = "Transacción exitosa";

@@ -10,42 +10,53 @@
 	</ui:define>
 	<ui:define name="content">
 		<h1>Lista Departamentos</h1>
-		<h:form method="get">
-			<h:selectOneMenu required="true" id="listaDepartamentos"
-				value="#{beanDepartamento.departamento.departamentoId}">
-				<f:selectItem noSelectionOption="true" itemValue="0"
-					itemLabel="-- Seleccione un departamento --" />
-				<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
-			</h:selectOneMenu>
-			<span style="width: 20px" />
-			<h:commandButton styleClass="btn -btn-success" style="width:120px"
-				action="#{beanDepartamento.submit()}" value="Consultar" />
-			<div id="error-message">
-				<span style="width: auto;"><h:message
-						for="listaDepartamentos" style="color: red;" /> </span>
-			</div>
-			<div class="row">
-				<div class="col-md-auto">
-					<div class="form-group">
-						<h:form clas="form-inline" id="formularioCiudades">
-							<div class="table-responsive-sm">
-								<h:dataTable id="tablaCiudades"
-									value="#{beanDepartamento.ciudades}" var="ciudad"
-									styleClass="table table-bordered table-hover table-sm table-light table-striped"
-									headerClass="thead-light bg-dark text-white" style="width:auto">
-									<h:column>
-										<f:facet name="header">Ciudad</f:facet>
-										#{ciudad.nombreCiudad}
+		<div class="row">
+			<div class="col-md-auto">
+				<h:form id="listaDepartamento" class="form-inline">
+					<div>
+						<h:selectOneMenu id="departamentos" required="true"
+							value="#{beanDepartamento.departamento.departamentoId}"
+							valueChangeListener="#{beanDepartamento.submit()}">
+							<f:selectItem noSelectionOption="true" itemValue="0"
+								itemLabel="-- Seleccione un departamento --" />
+							<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
+						</h:selectOneMenu>
+						<span style="width: 20px" />
+						<h:commandButton styleClass="btn btn-success" style="width:120px"
+							action="#{beanDepartamento.submit()}" value="Consultar" />
+					</div>
+				</h:form>
 
-									</h:column>
-
-								</h:dataTable>
-							</div>
-						</h:form>
+				<div id="error-message">
+					<span style="width: auto;"> <h:message for="departamentos"
+							style="color: red;" />
+					</span>
+				</div>
+				<span style="width: 20px" />
+				<div class="row">
+					<div class="col-md-auto">
+						<div class="form-group">
+							<h:form class="form-inline" id="formularioCiudades">
+								<div class="table-responsive-sm">
+									<h:dataTable id="tablaCiudades"
+										value="#{beanDepartamento.ciudades}" var="ciudad"
+										styleClass="table table-bordered table-hover table-sm table-light table-striped"
+										headerClass="thead-light bg-dark text-white"
+										style="width:auto">
+										<h:column>
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{ciudad.nombreCiudad}" />
+										</h:column>
+									</h:dataTable>
+								</div>
+							</h:form>
+						</div>
 					</div>
 				</div>
 			</div>
-		</h:form>
+
+		</div>
+
 	</ui:define>
 </ui:composition>
 </html>

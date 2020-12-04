@@ -96,7 +96,7 @@ public class ControladorDepartamento {
 
 	}
 
-	public List<Ciudad> consultarCiudadesDepartamento(String idDepartamento) {
+	public List<Ciudad> consultarCiudadesDepartamento(Integer idDepartamento) {
 
 		try {
 			List<Ciudad> d = DAODepartamento.buscarDepartamentoId(idDepartamento).getCiudads();
