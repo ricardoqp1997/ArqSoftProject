@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = "Departamento.findId", query = "SELECT MAX(d.departamentoId) FROM Departamento d"),
-		@NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d ORDER BY d.nombreDepartamento DESC") })
+		@NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d ORDER BY d.nombreDepartamento ASC") })
 public class Departamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
