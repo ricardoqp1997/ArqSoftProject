@@ -5,11 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-
-import org.primefaces.component.datatable.DataTable;
 
 import controller.ControladorDepartamento;
 import model.DAO.Util;
@@ -55,7 +51,6 @@ public class BeanDepartamento {
 	public List<SelectItem> getListaDepartamentos() {
 		try {
 			this.listaDepartamentos = new ArrayList<SelectItem>();
-			controladorDepartamento = new ControladorDepartamento();
 			List<Departamento> departamentosLista = controladorDepartamento.seleccionarDepartamentos();
 			this.listaDepartamentos.clear();
 			for (Departamento departamentos : departamentosLista) {
@@ -71,23 +66,22 @@ public class BeanDepartamento {
 		return listaDepartamentos;
 	}
 
-	public String submit() {
+	public String consultaCiudadesDepartamento() {
 		try {
 			departamento = controladorDepartamento.seleccionarDepartamentoId(departamento.getDepartamentoId());
 			ciudades.clear();
-			for (Ciudad c : departamento.getCiudads()) {
-				ciudades.add(c);
-			}
+			ciudades = departamento.getCiudads();
 			codError = "0000";
 			mensajeError = "Transacción Exitosa en Submit";
 			descError = "Transacción exitosa";
 		} catch (Exception e) {
-			codError = "0000";
+			codError = "03";
 			mensajeError = "Error en submit " + e.getMessage();
 		} finally {
 			Util.CreateLog(CODIGOERROR + codError, descError, mensajeError);
+
 		}
-		return "Exitoso";
+		return codError;
 
 	}
 
