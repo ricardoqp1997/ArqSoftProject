@@ -5,7 +5,12 @@ import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+
+import org.primefaces.component.datatable.DataTable;
+
 import controller.ControladorDepartamento;
 import model.DAO.Util;
 import model.DTO.Ciudad;
@@ -69,7 +74,7 @@ public class BeanDepartamento {
 	public String submit() {
 		try {
 			departamento = controladorDepartamento.seleccionarDepartamentoId(departamento.getDepartamentoId());
-			System.out.println(departamento.getNombreDepartamento());
+			ciudades.clear();
 			for (Ciudad c : departamento.getCiudads()) {
 				ciudades.add(c);
 			}
