@@ -85,20 +85,21 @@
 	                            
 								<h:form id="QueryConsulta" class="">
 								
-								
 									<h5 class="card-title">Ingrese los datos del estudiante</h5>
 	
 	                                <p class="card-text text-card-resp">
 	                                    Para validar su estado de ingreso a la universidad ingrese los siguientes campos:
 	                                </p>
 	                                
-	                                Documento del aspirante<h:inputText value="#{beanAspirante.documento}" class="form-control"/>
+	                                Documento del aspirante
+	                                <h:inputText required="true" value="#{beanAspirante.documento}" class="form-control"/>
 	                                <br/>
 	
-	                                Codigo asignado<h:inputText value="#{beanAspirante.codigo}" class="form-control"/>
+	                                Codigo asignado
+	                                <h:inputText required="true" value="#{beanAspirante.codigo}" class="form-control"/>
 									
 									<br/>
-									<h:commandButton value="Consultar" styleClass="btn btn-dark btn-ruta" action="."/>
+									<h:commandButton value="Consultar" styleClass="btn btn-success btn-ruta" action="."/>
 																
 								</h:form>
 	                                
@@ -111,7 +112,35 @@
 	
 	                <!-- Tarjeta 2-->
 	                <div class="col-md-auto posicion_tarjeta">
-	                    <div class="card contenido_tarjeta_2" id="map"></div>
+	                    <div class="card contenido_tarjeta_2" id="map">
+	                    
+	                    	<h:form class="form-inline" id="DatosAspirante">
+								<div class="table-responsive-sm">
+									<h:dataTable id="tablaAspirante"
+										value="#{beanAspirante.aspirante}" var="aspirante"
+										styleClass="table table-bordered table-hover table-sm table-light table-striped"
+										headerClass="thead-light bg-dark text-white"
+										style="width:auto">
+										<h:column>
+											<f:facet name="header">Nombre</f:facet>
+											<h:outputLabel value="#{aspirante.nombreAspirante}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{aspirante.apellidoAspirante}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{aspirante.cedulaAspirante}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{aspirante.cedulaAspirante}" />
+										</h:column>
+									</h:dataTable>
+								</div>
+							</h:form>
+	                    </div>
 	                </div>
 	
 	            </div>
