@@ -23,6 +23,9 @@ public class AspiranteDAO {
 	public AspiranteDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 	}
 
 	public String Create(Aspirante aspirante) {

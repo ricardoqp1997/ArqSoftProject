@@ -23,12 +23,18 @@ public class DepartamentoDAO {
 	public DepartamentoDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
+
 	}
 
 	public String crearDepartamento(Departamento departamento) {
 		String mensajeError = "";
 		String codError = "";
-
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		try {
 			em.getTransaction().begin();
 			em.persist(departamento);
@@ -60,6 +66,9 @@ public class DepartamentoDAO {
 	public String actualizarDepartamento(int idDepartamento, String nombreDepartamento) {
 		String mensajeError = "";
 		String codError = "";
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		try {
 
 			em.getTransaction().begin();
@@ -86,6 +95,9 @@ public class DepartamentoDAO {
 	public List<Departamento> buscarTodosDepartamentos() {
 		String mensajeError = "";
 		String codError = "";
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		List<Departamento> departamentos = null;
 		try {
 			TypedQuery<Departamento> seleccionarDepartamentos = em.createNamedQuery("Departamento.findAll",
@@ -100,20 +112,29 @@ public class DepartamentoDAO {
 	}
 
 	public Departamento buscarDepartamentoId(int idDepartamento) {
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		Departamento departamento = em.find(Departamento.class, idDepartamento);
 		return departamento;
 	}
 
 	public Departamento buscarDepartamentoId(String nombreDepartamento) {
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		Departamento departamento = em.find(Departamento.class, nombreDepartamento);
 		return departamento;
 	}
 
 	public String eliminarDepartamento(int idDepartamento) {
-
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		Departamento departamento = em.find(Departamento.class, idDepartamento);
 		String codError = "";
 		String mensajeError = "";
+
 		try {
 			em.getTransaction().begin();
 			em.remove(departamento);
