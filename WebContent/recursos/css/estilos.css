@@ -1,6 +1,6 @@
 * {
 	font-family: 'Josefin Sans', sans-serif;
-	margin-right: 2px;
+	 margin-right: 2px;
 	font-size: large;
 }
 
@@ -8,10 +8,6 @@
 	background: #00aeef; /*#64C0E8; */
 	margin-left: -5px;
 	margin-top: -10px;
-}
-
-div {
-	margin-left: 8px;
 }
 
 @import
