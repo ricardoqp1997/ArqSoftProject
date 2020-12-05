@@ -83,20 +83,20 @@
 	                        <div class="card-body">
 	                            <form id="map-form" method="post" role="form" action="{% url 'calculator' %}">
 	
-	                                <h5 class="card-title">Tablero de ruta</h5>
+	                                <h5 class="card-title">Ingrese los datos del estudiante/h5>
 	
 	                                <p class="card-text text-card-resp">
-	                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-	                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-	                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	                                    Para validar su estado de ingreso a la universidad ingrese los siguientes campos:
 	                                </p>
 	
-	                                <label for="end">¿A donde va?</label>
-	                                <input type="text" id="end" class="form-control" value="{{ end }}"/>
+	                                <!--label for="end">¿A donde va?</label-->
+	                                <h:inputText value="" class="form-control">Documento del aspirante</h:inputText>
+	                                <!--input type="text" id="end" class="form-control" value="{{ end }}"/-->
 	                                <br/>
 	
-	                                <label for="start">¿De donde sale?</label>
-	                                <input type="text" id="start" class="form-control" value="{{ start }}"/>
+	                                <!--label for="start">¿De donde sale?</label-->
+	                                <h:inputText value="" class="form-control">Codigo asignado</h:inputText>
+	                                <!--input type="text" id="start" class="form-control" value="{{ start }}"/-->
 	
 	                                <input type="submit" value="Ver ruta" class="btn btn-dark btn-ruta" id="submit" name="ruta"/>
 	
