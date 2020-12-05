@@ -90,7 +90,11 @@ public class BeanAspirante {
 	}
 
 	public void consultarAspirante() {
-		aspirante = controladorAspirante.consultarAspirante(Integer.parseInt(this.documento));
+
+		if (controladorAspirante.consultarAspirante(Integer.parseInt(this.documento)).getQrcodeAspirante()
+				.toString() == codigo) {
+			aspirante = controladorAspirante.consultarAspirante(Integer.parseInt(this.documento));
+		}
 
 	}
 
