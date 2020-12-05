@@ -1,6 +1,11 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 import javax.faces.bean.SessionScoped;
 
 import model.DTO.Aspirante;
@@ -8,8 +13,10 @@ import model.DTO.Aspirante;
 @ManagedBean
 @SessionScoped
 public class BeanAspirante {
+	
 	private Aspirante aspirante;
 	private String documento;
+	
 	public String getDocumento() {
 		return documento;
 	}
@@ -48,6 +55,10 @@ public class BeanAspirante {
 	
 	public BeanAspirante(){
 		aspirante = new Aspirante();
+	}
+	
+	public void getDatosAspirante() {
+		
 	}
 	
 	
