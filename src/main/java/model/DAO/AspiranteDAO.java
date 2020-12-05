@@ -53,10 +53,7 @@ public class AspiranteDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
-		} finally {
-
-			em.close();
-		}
+		} 
 		return codError;
 	}
 
@@ -79,10 +76,7 @@ public class AspiranteDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
-		} finally {
-
-			em.close();
-		}
+		} 
 		return codError;
 	}
 
@@ -122,9 +116,7 @@ public class AspiranteDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORELIMINAR + "con Identificacion: " + idAspirante, mensajeError);
-		} finally {
-			em.close();
-		}
+		} 
 		return codError;
 	}
 }

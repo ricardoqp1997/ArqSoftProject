@@ -23,19 +23,16 @@ public class DepartamentoDAO {
 	public DepartamentoDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
-		if (!em.isOpen()) {
-			em = emf.createEntityManager();
-		}
-
 	}
 
 	public String crearDepartamento(Departamento departamento) {
 		String mensajeError = "";
 		String codError = "";
-		if (!em.isOpen()) {
-			em = emf.createEntityManager();
-		}
+
 		try {
+			if (!em.isOpen()) {
+				em = emf.createEntityManager();
+			}
 			em.getTransaction().begin();
 			em.persist(departamento);
 			em.getTransaction().commit();
@@ -56,9 +53,6 @@ public class DepartamentoDAO {
 			codError = CODIGOERROR + "103";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
-		} finally {
-
-			em.close();
 		}
 		return codError;
 	}
@@ -66,11 +60,11 @@ public class DepartamentoDAO {
 	public String actualizarDepartamento(int idDepartamento, String nombreDepartamento) {
 		String mensajeError = "";
 		String codError = "";
-		if (!em.isOpen()) {
-			em = emf.createEntityManager();
-		}
-		try {
 
+		try {
+			if (!em.isOpen()) {
+				em = emf.createEntityManager();
+			}
 			em.getTransaction().begin();
 			Departamento departamentomodificar = em.find(Departamento.class, idDepartamento);
 			departamentomodificar.setNombreDepartamento(nombreDepartamento);
@@ -85,9 +79,6 @@ public class DepartamentoDAO {
 			codError = CODIGOERROR + "103";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
-		} finally {
-
-			em.close();
 		}
 		return codError;
 	}
@@ -95,11 +86,12 @@ public class DepartamentoDAO {
 	public List<Departamento> buscarTodosDepartamentos() {
 		String mensajeError = "";
 		String codError = "";
-		if (!em.isOpen()) {
-			em = emf.createEntityManager();
-		}
+
 		List<Departamento> departamentos = null;
 		try {
+			if (!em.isOpen()) {
+				em = emf.createEntityManager();
+			}
 			TypedQuery<Departamento> seleccionarDepartamentos = em.createNamedQuery("Departamento.findAll",
 					Departamento.class);
 			departamentos = seleccionarDepartamentos.getResultList();
@@ -112,30 +104,27 @@ public class DepartamentoDAO {
 	}
 
 	public Departamento buscarDepartamentoId(int idDepartamento) {
-		if (!em.isOpen()) {
-			em = emf.createEntityManager();
-		}
+
 		Departamento departamento = em.find(Departamento.class, idDepartamento);
 		return departamento;
 	}
 
 	public Departamento buscarDepartamentoId(String nombreDepartamento) {
-		if (!em.isOpen()) {
-			em = emf.createEntityManager();
-		}
+
 		Departamento departamento = em.find(Departamento.class, nombreDepartamento);
 		return departamento;
 	}
 
 	public String eliminarDepartamento(int idDepartamento) {
-		if (!em.isOpen()) {
-			em = emf.createEntityManager();
-		}
+
 		Departamento departamento = em.find(Departamento.class, idDepartamento);
 		String codError = "";
 		String mensajeError = "";
 
 		try {
+			if (!em.isOpen()) {
+				em = emf.createEntityManager();
+			}
 			em.getTransaction().begin();
 			em.remove(departamento);
 			em.getTransaction().commit();
@@ -150,8 +139,6 @@ public class DepartamentoDAO {
 			codError = CODIGOERROR + "103";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idDepartamento, mensajeError);
-		} finally {
-			em.close();
 		}
 		return codError;
 	}

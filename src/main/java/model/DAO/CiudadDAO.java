@@ -58,7 +58,7 @@ public class CiudadDAO {
 
 		} finally {
 			Util.CreateLog(codError, descError, mensajeError);
-			em.close();
+
 		}
 		return codError;
 	}
@@ -85,7 +85,7 @@ public class CiudadDAO {
 			descError = ERRORACTUALIZAR;
 		} finally {
 			Util.CreateLog(codError, descError, mensajeError);
-			em.close();
+
 		}
 		return codError;
 	}
@@ -132,7 +132,7 @@ public class CiudadDAO {
 
 		} finally {
 			Util.CreateLog(codError, descError, mensajeError);
-			em.close();
+
 		}
 		return codError;
 	}

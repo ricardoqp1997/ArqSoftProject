@@ -51,9 +51,6 @@ public class ProgramaDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
-		} finally {
-
-			em.close();
 		}
 		return codError;
 	}
@@ -79,9 +76,6 @@ public class ProgramaDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
-		} finally {
-
-			em.close();
 		}
 		return codError;
 	}
@@ -121,8 +115,6 @@ public class ProgramaDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idPrograma, mensajeError);
-		} finally {
-			em.close();
 		}
 		return codError;
 	}

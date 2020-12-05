@@ -37,7 +37,7 @@ public class SedeUniversidadDAO {
 			em.getTransaction().commit();
 
 			codError = "0000";
-		}  catch (EntityExistsException existEntity) {
+		} catch (EntityExistsException existEntity) {
 			mensajeError += " " + existEntity.getLocalizedMessage() + " " + existEntity.getMessage();
 			codError = CODIGOERROR + " 01";
 			em.getTransaction().rollback();
@@ -52,9 +52,6 @@ public class SedeUniversidadDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
-		} finally {
-
-			em.close();
 		}
 		return codError;
 	}
@@ -83,9 +80,6 @@ public class SedeUniversidadDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
-		} finally {
-
-			em.close();
 		}
 		return codError;
 	}
@@ -126,8 +120,6 @@ public class SedeUniversidadDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORELIMINAR + "con id: " + idSedeUniversidad, mensajeError);
-		} finally {
-			em.close();
 		}
 		return codError;
 	}
