@@ -125,9 +125,7 @@
 					</div>
 					<!-- Tarjeta 2-->
 					<div class="col-md-auto posicion_tarjeta">
-						<div class="card contenido_tarjeta_2" id="map">
-
-							<h:form class="form-inline" id="DatosAspirante">
+						<h:form class="form-inline" id="DatosAspirante">
 								<div class="table-responsive-sm">
 									<h:dataTable id="tablaAspirante"
 										value="#{beanAspirante.aspirante}" var="aspirante"
@@ -167,13 +165,25 @@
 										</h:column>
 
 									</h:dataTable>
-								</div>
+									
+									<div class="card contenido_tarjeta_2" id="map"></div>
 							</h:form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script>
+	      let map;
+	
+	      function initMap() {
+	        map = new google.maps.Map(document.getElementById("map"), {
+	          center: { lat: -34.397, lng: 150.644 },
+	          zoom: 8,
+	        });
+	      }
+       </script>
 	</ui:define>
 </ui:composition>
 </html>
