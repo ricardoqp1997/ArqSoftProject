@@ -4,11 +4,7 @@
 	font-size: large;
 }
 
-.header {
-	background: #00aeef; /*#64C0E8; */
-	margin-left: -5px;
-	margin-top: -10px;
-}
+
 
 @import
 	url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700);
