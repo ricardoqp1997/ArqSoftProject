@@ -99,7 +99,7 @@
 	                                <h:inputText required="true" value="#{beanAspirante.codigo}" class="form-control"/>
 									
 									<br/>
-									<h:commandButton value="Consultar" styleClass="btn btn-success btn-ruta" action="."/>
+									<h:commandButton value="Consultar" styleClass="btn btn-success btn-ruta" action="#{beanAspirante.getDatosAspirante}"/>
 																
 								</h:form>
 	                                
@@ -126,7 +126,7 @@
 											<h:outputLabel value="#{aspirante.nombreAspirante}" />
 										</h:column>
 										<h:column>
-											<f:facet name="header">Ciudad</f:facet>
+											<f:facet name="header">Apellido</f:facet>
 											<h:outputLabel value="#{aspirante.apellidoAspirante}" />
 										</h:column>
 										<h:column>
