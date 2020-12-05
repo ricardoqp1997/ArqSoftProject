@@ -157,24 +157,23 @@
 		<h1>Lista de aspirantes</h1>
 		<div class="row">
 			<div class="col-md-auto">
-				<h:form id="listaDepartamento" class="form-inline">
+				<h:form id="listaAspirantes" class="form-inline">
 					<div>
-						<h:selectOneMenu id="departamentos" required="true"
-							value="#{beanDepartamento.departamento.departamentoId}"
-							validatorMessage="Por favor selección una opción válida">
+						<h:selectOneMenu id="aspirantes" required="true"
+							value="#{beanAspirante.aspirante.cedulaAspirante}"
+							validatorMessage="Por favor seleccione una opción válida">
 							<f:selectItem noSelectionOption="true" itemValue="0"
 								itemLabel="-- Seleccione un departamento --" />
-							<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
+							<f:selectItems value="#{beanAspirante.aspirantes}" />
 						</h:selectOneMenu>
 						<span style="width: 20px" />
 						<h:commandButton styleClass="btn btn-success" style="width:120px"
-							action="#{beanDepartamento.consultaCiudadesDepartamento()}"
-							value="Consultar" />
+							action="#{beanAspirante.consultarAspirante}" value="Consultar" />
 					</div>
 				</h:form>
 
 				<div id="error-message">
-					<span style="width: auto;"> <h:message for="departamentos"
+					<span style="width: auto;"> <h:message for="aspirantes"
 							style="color: red;" />
 					</span>
 				</div>
@@ -185,13 +184,17 @@
 							<h:form class="form-inline" id="formularioCiudades">
 								<div class="table-responsive-sm">
 									<h:dataTable id="tablaCiudades"
-										value="#{beanDepartamento.ciudades}" var="ciudad"
+										value="#{beanAspirante.listaAspirantes}" var="aspirante"
 										styleClass="table table-bordered table-hover table-sm table-light table-striped"
 										headerClass="thead-light bg-dark text-white"
 										style="width:auto">
 										<h:column>
-											<f:facet name="header">Ciudad</f:facet>
-											<h:outputLabel value="#{ciudad.nombreCiudad}" />
+											<f:facet name="header">Programa</f:facet>
+											<h:outputLabel value="#{aspirante.programa}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">Estado</f:facet>
+											<h:outputLabel value="#{aspirante.admitido}" />
 										</h:column>
 									</h:dataTable>
 								</div>

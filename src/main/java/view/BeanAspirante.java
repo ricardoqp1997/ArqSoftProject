@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -8,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
 import controller.ControladorAspirante;
+import model.DAO.Util;
 import model.DTO.Aspirante;
 
 @ManagedBean
@@ -21,6 +23,7 @@ public class BeanAspirante {
 	private static String mensajeError = "";
 
 	private Aspirante aspirante;
+	private List<Aspirante> listaAspirantes;
 	private List<SelectItem> aspirantes;
 	private String documento;
 	private String codigo;
@@ -40,6 +43,14 @@ public class BeanAspirante {
 		this.aspirante = aspirante;
 	}
 
+	public List<Aspirante> getListaAspirantes() {
+		return listaAspirantes;
+	}
+
+	public void setListaAspirantes(List<Aspirante> listaAspirantes) {
+		this.listaAspirantes = listaAspirantes;
+	}
+
 	public String getDocumento() {
 		return documento;
 	}
@@ -57,6 +68,20 @@ public class BeanAspirante {
 	}
 
 	public List<SelectItem> getAspirantes() {
+		try {
+			this.aspirantes = new ArrayList<SelectItem>();
+			List<Aspirante> listaAspirantes = controladorAspirante.buscarTodosAspirantes();
+			this.aspirantes.clear();
+			for (Aspirante aspirante : listaAspirantes) {
+				SelectItem aspiranteOpcion = new SelectItem(aspirante.getCedulaAspirante(),
+						aspirante.getNombreAspirante() + " " + aspirante.getApellidoAspirante());
+				this.aspirantes.add(aspiranteOpcion);
+			}
+			Util.CreateLog(codError + "00", MENSAJEEXITOSO, "Consulta Exitosa en Bean Aspirantes");
+		} catch (Exception e) {
+			codError += "03";
+			Util.CreateLog(CODIGOERROR + codError, DESCRIPCIONERROR, e.getMessage());
+		}
 		return aspirantes;
 	}
 
