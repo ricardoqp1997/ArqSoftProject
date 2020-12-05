@@ -170,34 +170,18 @@
 
 									</h:dataTable>
 									
-									<div class="card contenido_tarjeta_2" id="map"></div></div>
+									<f:view contentType="text/html">
+									<div class="card contenido_tarjeta_2" id="map">
+									<p:gmap center="#{aspirante.sedeUniversidad.direccionSede}" zoom="15" type="hybrid"></p:gmap>
+									</div>
+       								</f:view>
+									
+								</div>
 							</h:form>
 						</div>
 					</div>
 				</div>
 			</div>
-		
-		<f:view contentType="text/html">
-		<script>
-		function initMap(): void {
-			  const myLatLng = { lat: -25.363, lng: 131.044 };
-
-			  const map = new google.maps.Map(
-			    document.getElementById("map") as HTMLElement,
-			    {
-			      zoom: 4,
-			      center: myLatLng,
-			    }
-			  );
-
-			  new google.maps.Marker({
-			    position: myLatLng,
-			    map,
-			    title: "Hello World!",
-			  });
-			}
-       </script>
-       </f:view>
  
 	</ui:define>
 </ui:composition>
