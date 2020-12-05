@@ -93,12 +93,13 @@
 										de ingreso a la universidad ingrese los siguientes campos:</p>
 	                                
 	                                Documento del aspirante
-	                                <h:inputText required="true"
-										value="#{beanAspirante.documento}" class="form-control" />
+	                                <h:inputText id="cedula"
+										required="true" value="#{beanAspirante.documento}"
+										class="form-control" />
 									<br />
 	
 	                                Codigo asignado
-	                                <h:inputText required="true"
+	                                <h:inputText id="qr" required="true"
 										value="#{beanAspirante.codigo}" class="form-control" />
 
 									<br />
@@ -106,6 +107,17 @@
 										styleClass="btn btn-success btn-ruta"
 										action="#{beanAspirante.consultarAspirante}" />
 
+									<div id="error-message">
+										<span style="width: auto;"> <h:message for="qr"
+												style="color: red;" />
+										</span>
+									</div>
+
+									<div id="error-message">
+										<span style="width: auto;"> <h:message for="cedula"
+												style="color: red;" />
+										</span>
+									</div>
 								</h:form>
 								<!--/form-->
 							</div>
@@ -134,7 +146,7 @@
 											<f:facet name="header">Cedula</f:facet>
 											<h:outputLabel value="#{aspirante.cedulaAspirante}" />
 										</h:column>
-										
+
 									</h:dataTable>
 								</div>
 							</h:form>
