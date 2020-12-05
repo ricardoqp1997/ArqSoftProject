@@ -85,6 +85,8 @@
 					<div class="col-md-auto posicion_tarjeta">
 						<div class="card contenido_tarjeta_1 text-center">
 							<div class="card-body">
+								<!--form id="map-form" method="post" role="form" action="{% url 'calculator' %}"-->
+
 								<h:form id="QueryConsulta" class="">
 
 									<h5 class="card-title">Ingrese los datos del estudiante</h5>
@@ -111,6 +113,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- Tarjeta 2-->
 					<div class="col-md-auto posicion_tarjeta">
 						<div class="card contenido_tarjeta_2" id="map">
@@ -131,26 +134,64 @@
 											<h:outputLabel value="#{aspirante.apellidoAspirante}" />
 										</h:column>
 										<h:column>
-											<f:facet name="header">Documento</f:facet>
+											<f:facet name="header">Ciudad</f:facet>
 											<h:outputLabel value="#{aspirante.cedulaAspirante}" />
 										</h:column>
 										<h:column>
+
 											<f:facet name="header">Ciudad</f:facet>
-											<h:outputLabel value="#{aspirante.ciudad.nombreCiudad}" />
+											<h:outputLabel value="#{aspirante.cedulaAspirante}" />
 										</h:column>
+									</h:dataTable>
+								</div>
+							</h:form>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<h1>Lista de aspirantes</h1>
+		<div class="row">
+			<div class="col-md-auto">
+				<h:form id="listaDepartamento" class="form-inline">
+					<div>
+						<h:selectOneMenu id="departamentos" required="true"
+							value="#{beanDepartamento.departamento.departamentoId}"
+							validatorMessage="Por favor selección una opción válida">
+							<f:selectItem noSelectionOption="true" itemValue="0"
+								itemLabel="-- Seleccione un departamento --" />
+							<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
+						</h:selectOneMenu>
+						<span style="width: 20px" />
+						<h:commandButton styleClass="btn btn-success" style="width:120px"
+							action="#{beanDepartamento.consultaCiudadesDepartamento()}"
+							value="Consultar" />
+					</div>
+				</h:form>
+
+				<div id="error-message">
+					<span style="width: auto;"> <h:message for="departamentos"
+							style="color: red;" />
+					</span>
+				</div>
+				<span style="width: 20px" />
+				<div class="row">
+					<div class="col-md-auto">
+						<div class="form-group">
+							<h:form class="form-inline" id="formularioCiudades">
+								<div class="table-responsive-sm">
+									<h:dataTable id="tablaCiudades"
+										value="#{beanDepartamento.ciudades}" var="ciudad"
+										styleClass="table table-bordered table-hover table-sm table-light table-striped"
+										headerClass="thead-light bg-dark text-white"
+										style="width:auto">
 										<h:column>
-											<f:facet name="header">Programa</f:facet>
-											<h:outputLabel value="#{aspirante.programa.nombrePrograma}" />
-										</h:column>
-										<h:column>
-											<f:facet name="header">Sede</f:facet>
-											<h:outputLabel
-												value="#{aspirante.sedeUniversidad.nombreSede} " />
-										</h:column>
-										<h:column>
-											<f:facet name="header">Dirección Sede</f:facet>
-											<h:outputLabel
-												value="#{aspirante.sedeUniversidad.direccionSede} " />
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{ciudad.nombreCiudad}" />
 										</h:column>
 									</h:dataTable>
 								</div>
