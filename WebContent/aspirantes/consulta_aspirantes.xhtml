@@ -14,6 +14,53 @@
 	<ui:define name="menu">
 	</ui:define>
 	<ui:define name="content">
+		
+		<section class="background-main position-relative overflow-hidden p-3 p-md-5 m-md-3">
+
+	        <div class="container-fluid dir_tarjeta">
+	
+	            <div class="row justify-content-md-center">
+	
+	                <!-- Tarjeta 1-->
+	                <div class="col-md-auto posicion_tarjeta">
+	                    <div class="card contenido_tarjeta_1 text-center">
+	                        <div class="card-body">
+	                            <form id="map-form" method="post" role="form" action="{% url 'calculator' %}"/>
+	
+	                                <h5 class="card-title">Tablero de ruta</h5>
+	
+	                                <p class="card-text text-card-resp">
+	                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+	                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+	                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	                                </p>
+	
+	                                <label hidden for="end">¿A donde va?</label>
+	                                <input hidden type="text" id="end" class="form-control" value="{{ end }}"/>
+	                                <br>
+	
+	                                <label hidden for="start">¿De donde sale?</label>
+	                                <input hidden type="text" id="start" class="form-control" value="{{ start }}"/>
+	
+	                                <input type="submit" value="Ver ruta" class="btn btn-dark btn-ruta" id="submit" name="ruta"/>
+	
+	                            </form>
+	
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <!-- Tarjeta 2-->
+	                <div class="col-md-auto posicion_tarjeta">
+	                    <div class="card contenido_tarjeta_2" id="map"></div>
+	                </div>
+	
+	            </div>
+	
+	        </div>
+	
+	    </section>
+	
 		<h1>Lista de aspirantes</h1>
 		<div class="row">
 			<div class="col-md-auto">
