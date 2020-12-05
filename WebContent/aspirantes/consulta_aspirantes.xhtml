@@ -81,9 +81,12 @@
 	                <div class="col-md-auto posicion_tarjeta">
 	                    <div class="card contenido_tarjeta_1 text-center">
 	                        <div class="card-body">
-	                            <form id="map-form" method="post" role="form" action="{% url 'calculator' %}">
-	
-	                                <h5 class="card-title">Ingrese los datos del estudiante/h5>
+	                            <!--form id="map-form" method="post" role="form" action="{% url 'calculator' %}"-->
+	                            
+								<h:form id="" class="">
+								
+								
+									<h5 class="card-title">Ingrese los datos del estudiante/h5>
 	
 	                                <p class="card-text text-card-resp">
 	                                    Para validar su estado de ingreso a la universidad ingrese los siguientes campos:
@@ -97,10 +100,15 @@
 	                                <!--label for="start">¿De donde sale?</label-->
 	                                <h:inputText value="" class="form-control">Codigo asignado</h:inputText>
 	                                <!--input type="text" id="start" class="form-control" value="{{ start }}"/-->
+									
+									<h:commandButton value="Consultar" styleClass="btn btn-dark btn-ruta" action=""/>
+	                                <!--input type="submit" value="Ver ruta" class="btn btn-dark btn-ruta" id="submit" name="ruta"-->
+								
+								
+								</h:form>
+	                                
 	
-	                                <input type="submit" value="Ver ruta" class="btn btn-dark btn-ruta" id="submit" name="ruta"/>
-	
-	                            </form>
+	                            <!--/form-->
 	
 	                        </div>
 	                    </div>
