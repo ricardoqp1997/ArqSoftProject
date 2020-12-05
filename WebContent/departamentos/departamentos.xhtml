@@ -8,6 +8,15 @@
 	<ui:define name="titulo">
 		<h:outputText value="Departamento" />
 	</ui:define>
+	<ui:define name="departamentos">
+		<span class="sr-only">(current)</span>
+	</ui:define>
+	<ui:define name="menu">
+		<li class="nav-item"><a class="nav-link"
+			href="CrearDepartamento.xhtml">Crear Departamentos<ui:insert
+					name="aspirantes" />
+		</a></li>
+	</ui:define>
 	<ui:define name="content">
 		<h1>Lista Departamentos</h1>
 		<div class="row">
@@ -16,14 +25,15 @@
 					<div>
 						<h:selectOneMenu id="departamentos" required="true"
 							value="#{beanDepartamento.departamento.departamentoId}"
-							valueChangeListener="#{beanDepartamento.submit()}">
+							validatorMessage="Por favor selección una opción válida">
 							<f:selectItem noSelectionOption="true" itemValue="0"
 								itemLabel="-- Seleccione un departamento --" />
 							<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
 						</h:selectOneMenu>
 						<span style="width: 20px" />
 						<h:commandButton styleClass="btn btn-success" style="width:120px"
-							action="#{beanDepartamento.submit()}" value="Consultar" />
+							action="#{beanDepartamento.consultaCiudadesDepartamento()}"
+							value="Consultar" />
 					</div>
 				</h:form>
 
@@ -54,9 +64,7 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
 	</ui:define>
 </ui:composition>
 </html>

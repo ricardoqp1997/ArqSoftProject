@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/plantillas/base.xhtml">
+	<ui:define name="titulo">
+		<h:outputText value="Consulta Aspirantes" />
+	</ui:define>
+	<ui:define name="aspirantes">
+		<span class="sr-only">(current)</span>
+	</ui:define>
+	<ui:define name="menu">
+	</ui:define>
+	<ui:define name="content">
+
+		<style>
+.dir_tarjeta {
+	align-content: center;
+}
+
+.posicion_tarjeta {
+	margin-top: 5px;
+	width: auto;
+	height: auto;
+}
+
+.contenido_tarjeta_1 {
+	background-color: #35BEDE;
+	width: 350px;
+	min-height: 400px;
+	height: auto;
+	position: sticky;
+	-webkit-box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.75);
+	box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.75);
+}
+
+.contenido_tarjeta_2 {
+	background-color: #F2F2EE;
+	min-height: 700px;
+	width: 1350px;
+	height: auto;
+	-webkit-box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.75);
+	box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.75);
+}
+
+.background-main {
+	background: #17105C;
+	color: #00203e;
+}
+
+.title-maps {
+	margin-top: 5%;
+}
+
+.contenido_tarjeta_1 {
+	width: 250px;
+	min-height: 300px;
+}
+
+.contenido_tarjeta_2 {
+	width: 850px;
+	min-height: 470px;
+}
+
+.text-card-resp {
+	font-size: small;
+}
+</style>
+
+		<h1 class="text-center title-maps title-map-resp">Resultados
+			individuales</h1>
+
+		<div
+			class="background-main position-relative overflow-hidden p-3 p-md-5 m-md-3">
+
+			<div class="container-fluid dir_tarjeta">
+
+				<div class="row justify-content-md-center">
+
+					<!-- Tarjeta 1-->
+					<div class="col-md-auto posicion_tarjeta">
+						<div class="card contenido_tarjeta_1 text-center">
+							<div class="card-body">
+								<!--form id="map-form" method="post" role="form" action="{% url 'calculator' %}"-->
+
+								<h:form id="QueryConsulta" class="">
+
+									<h5 class="card-title">Ingrese los datos del estudiante</h5>
+
+									<p class="card-text text-card-resp">Para validar su estado
+										de ingreso a la universidad ingrese los siguientes campos:</p>
+	                                
+	                                Documento del aspirante
+	                                <h:inputText required="true"
+										value="#{beanAspirante.documento}" class="form-control" />
+									<br />
+	
+	                                Codigo asignado
+	                                <h:inputText required="true"
+										value="#{beanAspirante.codigo}" class="form-control" />
+
+									<br />
+									<h:commandButton value="Consultar"
+										styleClass="btn btn-success btn-ruta"
+										action="#{beanAspirante.consultarAspirante}" />
+
+								</h:form>
+								<!--/form-->
+							</div>
+						</div>
+					</div>
+
+					<!-- Tarjeta 2-->
+					<div class="col-md-auto posicion_tarjeta">
+						<div class="card contenido_tarjeta_2" id="map">
+
+							<h:form class="form-inline" id="DatosAspirante">
+								<div class="table-responsive-sm">
+									<h:dataTable id="tablaAspirante"
+										value="#{beanAspirante.aspirante}" var="aspirante"
+										styleClass="table table-bordered table-hover table-sm table-light table-striped"
+										headerClass="thead-light bg-dark text-white"
+										style="width:auto">
+										<h:column>
+											<f:facet name="header">Nombre</f:facet>
+											<h:outputLabel value="#{aspirante.nombreAspirante}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">Apellido</f:facet>
+											<h:outputLabel value="#{aspirante.apellidoAspirante}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{aspirante.cedulaAspirante}" />
+										</h:column>
+										<h:column>
+
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{aspirante.cedulaAspirante}" />
+										</h:column>
+									</h:dataTable>
+								</div>
+							</h:form>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<h1>Lista de aspirantes</h1>
+		<div class="row">
+			<div class="col-md-auto">
+				<h:form id="listaDepartamento" class="form-inline">
+					<div>
+						<h:selectOneMenu id="departamentos" required="true"
+							value="#{beanDepartamento.departamento.departamentoId}"
+							validatorMessage="Por favor selección una opción válida">
+							<f:selectItem noSelectionOption="true" itemValue="0"
+								itemLabel="-- Seleccione un departamento --" />
+							<f:selectItems value="#{beanDepartamento.listaDepartamentos}" />
+						</h:selectOneMenu>
+						<span style="width: 20px" />
+						<h:commandButton styleClass="btn btn-success" style="width:120px"
+							action="#{beanDepartamento.consultaCiudadesDepartamento()}"
+							value="Consultar" />
+					</div>
+				</h:form>
+
+				<div id="error-message">
+					<span style="width: auto;"> <h:message for="departamentos"
+							style="color: red;" />
+					</span>
+				</div>
+				<span style="width: 20px" />
+				<div class="row">
+					<div class="col-md-auto">
+						<div class="form-group">
+							<h:form class="form-inline" id="formularioCiudades">
+								<div class="table-responsive-sm">
+									<h:dataTable id="tablaCiudades"
+										value="#{beanDepartamento.ciudades}" var="ciudad"
+										styleClass="table table-bordered table-hover table-sm table-light table-striped"
+										headerClass="thead-light bg-dark text-white"
+										style="width:auto">
+										<h:column>
+											<f:facet name="header">Ciudad</f:facet>
+											<h:outputLabel value="#{ciudad.nombreCiudad}" />
+										</h:column>
+									</h:dataTable>
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -5,12 +5,116 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<ui:composition template="/plantillas/base.xhtml">
-	<ui:define name="titulo">
-		<h:outputText value="Admisiones UN" />
-	</ui:define>
-	<ui:define name="content">
-	</ui:define>
-</ui:composition>
+	
+	<ui:composition template="/plantillas/base.xhtml">
+	
+		<style>
+		
+			h1{
+				text-align: center;
+	 			font-size: 30px;
+			}
+		 	
+	 		.titulo{
+	 			text-align: center;
+	 			font-size: 30px;	 		
+ 			}
+ 			.carrusel_unal{
+ 				margin-top: 5%;
+ 				margin-bottom: 5%;
+ 				margin-left: 5%;
+ 				margin-right: 5%;
+ 				
+ 				margin:0 auto;
+ 				
+ 			}
+ 			.carrusel-efectos{
+ 				border-radius: 3px;
+ 				-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+				-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+				box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+ 			}
+ 			
+ 			
+ 			.button-consulta{
+ 				background-color: #11330D;
+ 			}
+ 			
+ 			.jumbotron-spae{
+ 				margin-top: 3%;
+ 			}
+	 		
+	 	</style>
+		 	
+		<ui:define name="titulo">
+			<h:outputText value="Admisiones UN" />
+		</ui:define>
+		<ui:define name="currentinicio">
+			<span class="sr-only">(current)</span>
+		</ui:define>
+		<ui:define name="content">
+			
+			<div class="container">
+			
+				<div class="jumbotron jumbotron-fluid">
+				  <div class="container">
+				    <h1 class="display-4">Bienvenido</h1>
+				    <p class="lead">Podrás conocer tu estado de admisión a tan solo un clic. Navega por el sitio para encontrar información de tu interés respecto a tu futuro en la Unal.</p>
+				  </div>
+				</div>
+				
+				<div class="carrusel-efectos">
+					<div id="carouselExampleCaptions" class="carousel slide carrusel_unal" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+					    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+					    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+					  </ol>
+					  <div class="carousel-inner carrusel_unal">
+					    <div class="carousel-item active">
+					      <img src="../recursos/imagenes/slider1_unal.jpg" class="d-block w-100" alt="..." loading="lazy" width="800px" height="600px"></img>
+					      <div class="carousel-caption d-none d-md-block">
+					        <h5>Estado de admisión</h5>
+					        <p>Podrás acceder y revisar tu estado de admisión en la Universidad Nacional de Colombia.</p>
+					      </div>
+					    </div>
+					    <div class="carousel-item carrusel_unal">
+					      <img src="../recursos/imagenes/slider2_unal.jpg" class="d-block w-100" alt="..." loading="lazy" width="800px" height="600px"></img>
+					      <div class="carousel-caption d-none d-md-block">
+					        <h5>Revisa las estadisticas</h5>
+					        <p>Dentro del sitio podrás encontrar informes respecto al estado de admisión de todos los postulados (proximamente).</p>
+					      </div>
+					    </div>
+					    <div class="carousel-item carrusel_unal">
+					      <img src="../recursos/imagenes/slider3_unal.jpg" class="d-block w-100" alt="..." loading="lazy" width="800px" height="600px"></img>
+					      <div class="carousel-caption d-none d-md-block">
+					        <h5>¿Donde estoy admitido?</h5>
+					        <p>Dentro del portal, al consutar el resultado de su proceos de admisión, podrá visualizar a que sede estará asignado.</p>
+					      </div>
+					    </div>
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					</div>
+				</div>
+				
+				<br/>
+				<div class="jumbotron jumbotron-spae">
+				  <h1 class="display-4">¡No esperes mas!</h1>
+				  <p class="lead">En el sitio conocerás si fuiste admitido al programa académico que has escogido.</p>
+				  <hr class="my-4"/>
+				  <p>¿No sabes cual es tu sede asignada? También podrás conocer a donde fuiste asignado para tu inicio de clases en la U.</p>
+				  <a class="btn btn-success btn-lg button-consulta" href="../aspirantes/consulta_aspirantes.xhtml" role="button">Conocer mas<ui:insert name="aspirantes" /></a>
+				</div>
+			</div>
+			
+		</ui:define>
+	</ui:composition>
 
 </html>

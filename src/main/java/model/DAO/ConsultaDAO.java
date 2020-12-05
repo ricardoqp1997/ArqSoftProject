@@ -49,10 +49,7 @@ public class ConsultaDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
-		} finally {
-
-			em.close();
-		}
+		} 
 		return codError;
 	}
 

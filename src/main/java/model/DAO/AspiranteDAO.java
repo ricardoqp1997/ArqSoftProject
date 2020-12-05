@@ -23,6 +23,9 @@ public class AspiranteDAO {
 	public AspiranteDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
+		if (!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 	}
 
 	public String Create(Aspirante aspirante) {
@@ -50,10 +53,7 @@ public class AspiranteDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORCREAR, mensajeError);
-		} finally {
-
-			em.close();
-		}
+		} 
 		return codError;
 	}
 
@@ -76,10 +76,7 @@ public class AspiranteDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORACTUALIZAR, mensajeError);
-		} finally {
-
-			em.close();
-		}
+		} 
 		return codError;
 	}
 
@@ -119,9 +116,7 @@ public class AspiranteDAO {
 			codError = CODIGOERROR + "03";
 			em.getTransaction().rollback();
 			Util.CreateLog(codError, ERRORELIMINAR + "con Identificacion: " + idAspirante, mensajeError);
-		} finally {
-			em.close();
-		}
+		} 
 		return codError;
 	}
 }
