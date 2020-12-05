@@ -135,7 +135,7 @@
 										value="#{beanAspirante.aspirante}" var="aspirante"
 										styleClass="table table-bordered table-hover table-sm table-light table-striped"
 										headerClass="thead-light bg-dark text-white"
-										style="width:auto">
+										style="width:100%">
 										<h:column>
 											<f:facet name="header">Nombre</f:facet>
 											<h:outputLabel value="#{aspirante.nombreAspirante}" />
@@ -178,7 +178,7 @@
 			</div>
 		
 		<script>
-	      let map;
+	      var map;
 	
 	      function initMap() {
 	        map = new google.maps.Map(document.getElementById("map"), {
