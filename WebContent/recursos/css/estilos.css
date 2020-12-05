@@ -1,6 +1,6 @@
 * {
-	font-family: 'Josefin Sans', sans-serif;
-	 margin-right: 2px;
+	font-family: sans-serif;
+	margin-right: 2px;
 	font-size: large;
 }
 
@@ -14,18 +14,8 @@
 	url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700);
 
 body {
-	background-color: #FFE1D4;
+	font-family: Rubik, sans-serif;
 	position: relative;
 	font-weight: 400;
 	font-size: 15px
-}
-
-.background-navbar{
-	background-color: #3E32A8;
-	color: #FFB380;
-	width: 100%;
-	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-	margin-bottom: 3%;
 }
