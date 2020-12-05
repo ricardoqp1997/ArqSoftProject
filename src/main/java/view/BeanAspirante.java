@@ -91,9 +91,9 @@ public class BeanAspirante {
 
 	public void consultarAspirante() {
 		try {
-			if (controladorAspirante.consultarAspirante(Integer.parseInt(this.documento)).getQrcodeAspirante()
-					.toString() == codigo) {
-				aspirante = controladorAspirante.consultarAspirante(Integer.parseInt(this.documento));
+			Aspirante a = controladorAspirante.consultarAspirante(Integer.parseInt(this.documento));
+			if (a.getQrcodeAspirante().toString() == codigo) {
+				aspirante = a;
 			}
 		} catch (Exception e) {
 			codError = "103";
