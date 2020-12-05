@@ -38,16 +38,13 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="../departamentos/departamentos.xhtml">Estadisticas de ingreso<ui:insert name="departamentos" /></a>
 			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link" href="https://unal.edu.co/" target="_blank">Sitio principal</a>
-			      </li>
 			      
 			      <li class="nav-item dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			          Aspirantes
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <a class="dropdown-item" href="#">Lista de aspirantes</a>
+			          <a class="dropdown-item" href="../aspirantes/consulta_aspirantes.xhtml">Lista de aspirantes<ui:insert name="aspirantes" /></a>
 			          <a class="dropdown-item disabled" href="#">Registrar aspirantes</a>
 			        </div>
 			      </li>
@@ -56,9 +53,13 @@
 			          Sedes
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <a class="dropdown-item" href="#">Lista de sedes</a>
+			          <a class="dropdown-item" href="../departamentos/departamentos.xhtml">Lista de sedes<ui:insert name="departamentos" /></a>
 			          <a class="dropdown-item disabled" href="#">Registrar sedes</a>
 		            </div>
+			      </li>
+			      
+			       <li class="nav-item">
+			        <a class="nav-link" href="https://unal.edu.co/" target="_blank">Sitio principal</a>
 			      </li>
 			      
 			    </ul>
