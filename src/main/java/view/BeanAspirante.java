@@ -89,11 +89,12 @@ public class BeanAspirante {
 		this.aspirantes = aspirantes;
 	}
 
-	public void consultarAspirante() {
+	public String consultarAspirante() {
 		
 		if (controladorAspirante.consultarAspirante(Integer.parseInt(this.documento)).getQrcodeAspirante().toString() == codigo) {
 			aspirante = controladorAspirante.consultarAspirante(Integer.parseInt(this.documento));
 		}
+		return "exitoso";
 
 	}
 
