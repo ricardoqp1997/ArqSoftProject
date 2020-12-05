@@ -93,15 +93,15 @@
 	                                </p>
 	
 	                                <!--label for="end">¿A donde va?</label-->
-	                                <h:inputText value="" class="form-control">Documento del aspirante</h:inputText>
+	                                <h:inputText value="#{beanAspirante.documento}" class="form-control">Documento del aspirante</h:inputText>
 	                                <!--input type="text" id="end" class="form-control" value="{{ end }}"/-->
 	                                <br/>
 	
 	                                <!--label for="start">¿De donde sale?</label-->
-	                                <h:inputText value="" class="form-control">Codigo asignado</h:inputText>
+	                                <h:inputText value="#{beanAspirante.codigo}" class="form-control">Codigo asignado</h:inputText>
 	                                <!--input type="text" id="start" class="form-control" value="{{ start }}"/-->
 									
-									<h:commandButton value="Consultar" styleClass="btn btn-dark btn-ruta" action=""/>
+									<h:commandButton value="Consultar" styleClass="btn btn-dark btn-ruta" action="."/>
 	                                <!--input type="submit" value="Ver ruta" class="btn btn-dark btn-ruta" id="submit" name="ruta"-->
 								
 								
