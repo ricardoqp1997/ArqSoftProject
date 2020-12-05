@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <ui:composition>
-	<header> <nav
+	<header class="header"> <nav
 		class="navbar navbar-expand-lg navbar-light bg-primary"> <a
 		class="navbar-brand" href="../index.xhtml"> <img
 		src="../recursos/imagenes/iconUN.png" height="120px" />
@@ -15,22 +15,24 @@
 		<span class="navbar-toggler-icon" />
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
-		<ui:insert name="menu">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link"
-					href="../index.xhtml">Inicio <ui:insert name="currentinicio" />
 
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link"
+				href="../index.xhtml">Inicio <ui:insert name="currentinicio" />
+
+			</a></li>
+			<ui:insert name="menu">
+				<li class="nav-item"><a class="nav-link"
+					href="../departamentos/departamentos.xhtml">Departamentos<ui:insert
+							name="departamentos" />
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="../departamentos/CrearDepartamento.xhtml">Crear
-						Departamentos<ui:insert name="creardepartamentos" />
+					href="../aspirantes/consulta_aspirantes.xhtml">Aspirantes<ui:insert
+							name="aspirantes" />
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="../departamentos/departamentos.xhtml">Buscar por
-						Departamento<ui:insert name="consultarDepartamentos" />
-				</a></li>
-			</ul>
-		</ui:insert>
+			</ui:insert>
+		</ul>
+
 	</div>
 	</nav> </header>
 </ui:composition>

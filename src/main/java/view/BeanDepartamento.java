@@ -16,6 +16,7 @@ import model.DTO.Departamento;
 @ApplicationScoped
 public class BeanDepartamento {
 	private Departamento departamento;
+	private String nombre;
 	private List<SelectItem> listaDepartamentos;
 	private List<Ciudad> ciudades;
 	private ControladorDepartamento controladorDepartamento;
@@ -38,6 +39,14 @@ public class BeanDepartamento {
 
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public List<Ciudad> getCiudades() {
@@ -68,6 +77,7 @@ public class BeanDepartamento {
 
 	public String consultaCiudadesDepartamento() {
 		try {
+
 			departamento = controladorDepartamento.seleccionarDepartamentoId(departamento.getDepartamentoId());
 			ciudades.clear();
 			ciudades = departamento.getCiudads();
@@ -83,6 +93,12 @@ public class BeanDepartamento {
 		}
 		return codError;
 
+	}
+
+	public String crearDepartamento() {
+		String resultado = controladorDepartamento.crearDepartamento(nombre);
+		System.out.println(resultado);
+		return resultado;
 	}
 
 }

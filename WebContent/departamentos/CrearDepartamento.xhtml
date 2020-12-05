@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template="/plantillas/base.xhtml">
+	<ui:define name="titulo">
+		<h:outputText value="Departamento" />
+	</ui:define>
+	<ui:define name="menu">
+		<li class="nav-item"><a class="nav-link"
+			href="departamentos.xhtml">Consulta Departamentos<ui:insert
+					name="aspirantes" />
+		</a></li>
+	</ui:define>
+	<ui:define name="content">
+		<h1>Crear Departamento</h1>
+		<div class="row">
+			<div class="col-md-auto">
+				<h:form id="crearDepartamento" method="POST">
+					<h:outputLabel
+						value="Por favor ingrese el nombre del departamento a crear:" />
+					<br />
+					<h:inputText id="departamento" a:placeholder="Nombre Departamento"
+						value="#{beanDepartamento.nombre}" />
+					<h:commandButton styleClass="btn btn-success" style="width:120px" action="#{beanDepartamento.crearDepartamento}"
+						value="Crear" />
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

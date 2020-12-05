@@ -6,16 +6,12 @@
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/plantillas/base.xhtml">
 	<ui:define name="titulo">
-		<h:outputText value="Departamento" />
+		<h:outputText value="Consulta Aspirantes" />
 	</ui:define>
-	<ui:define name="departamentos">
+	<ui:define name="aspirantes">
 		<span class="sr-only">(current)</span>
 	</ui:define>
 	<ui:define name="menu">
-		<li class="nav-item"><a class="nav-link"
-			href="CrearDepartamento.xhtml">Crear Departamentos<ui:insert
-					name="aspirantes" />
-		</a></li>
 	</ui:define>
 	<ui:define name="content">
 		<h1>Lista Departamentos</h1>
