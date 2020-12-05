@@ -90,12 +90,16 @@ public class BeanAspirante {
 	}
 
 	public void consultarAspirante() {
-
-		if (controladorAspirante.consultarAspirante(Integer.parseInt(this.documento)).getQrcodeAspirante()
-				.toString() == codigo) {
-			aspirante = controladorAspirante.consultarAspirante(Integer.parseInt(this.documento));
+		try {
+			if (controladorAspirante.consultarAspirante(Integer.parseInt(this.documento)).getQrcodeAspirante()
+					.toString() == codigo) {
+				aspirante = controladorAspirante.consultarAspirante(Integer.parseInt(this.documento));
+			}
+		} catch (Exception e) {
+			codError = "103";
+			mensajeError = "Error al consultar aspirante el aspirante no existe o el codigo suministrado no corresponde al del estudiante";
+			Util.CreateLog(codError, mensajeError, descError);
 		}
-
 	}
 
 }
