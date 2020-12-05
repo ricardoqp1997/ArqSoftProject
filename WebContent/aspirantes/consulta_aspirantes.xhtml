@@ -160,7 +160,7 @@
 										</h:column>
 										<h:column>
 											<f:facet name="header">Dirección Sede</f:facet>
-											<h:outputLabel
+											<h:outputLabel id="direccionsede"
 												value="#{aspirante.sedeUniversidad.direccionSede}" />
 										</h:column>
 
@@ -178,7 +178,7 @@
 	
 	      function initMap() {
 	        map = new google.maps.Map(document.getElementById("map"), {
-	          center: { lat: -34.397, lng: 150.644 },
+	          center: document.getElementById("direccionsede").value,
 	          zoom: 8,
 	        });
 	      }
