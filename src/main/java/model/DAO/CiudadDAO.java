@@ -94,7 +94,7 @@ public class CiudadDAO {
 		return ciudads;
 	}
 
-	public CiudadModel buscarCiudadId(int id) {
+	public CiudadModel buscarCiudadId(Long id) {
 		CiudadModel ciudad = em.find(CiudadModel.class, id);
 		return ciudad;
 	}

@@ -1,6 +1,7 @@
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DTO\DepartamentoModel.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\CiudadDAO.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\controller\ControladorDepartamento.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\view\BeanCiudad.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\DepartamentoDAO.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\view\BeanDepartamento.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\controller\ControladorCiudad.java
@@ -8,6 +9,5 @@ C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\s
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DTO\TemperaturaHumedadModel.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\TemperaturaHumedadDAO.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\controller\ControladorTemperaturaHumedad.java
-C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\view\BeanAspirante.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\PaisDAO.java
 C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DTO\PaisModel.java

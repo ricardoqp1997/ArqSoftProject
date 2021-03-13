@@ -38,7 +38,7 @@ public class ControladorCiudad {
 		}
 	}
 
-	public CiudadModel consultarCiudades(Integer id) {
+	public CiudadModel consultarCiudades(Long id) {
 
 		try {
 			CiudadModel ciudad = DAOCiudad.buscarCiudadId(id);
@@ -57,7 +57,7 @@ public class ControladorCiudad {
 		}
 	}
 
-	public List<TemperaturaHumedadModel> consultarTemperaturaHumedadCiudad(Integer id) {
+	public List<TemperaturaHumedadModel> consultarTemperaturaHumedadCiudad(Long id) {
 		try {
 			List<TemperaturaHumedadModel> temperaturas = DAOCiudad.buscarCiudadId(id).getTemperaturaHumedads();
 			// codError = "0000";
@@ -75,7 +75,7 @@ public class ControladorCiudad {
 		}
 	}
 	
-	public DepartamentoModel consultarDepartamentoCiudad(Integer id) {
+	public DepartamentoModel consultarDepartamentoCiudad(Long id) {
 		
 		try {
 			DepartamentoModel departamento = DAOCiudad.buscarCiudadId(id).getDepartamento();

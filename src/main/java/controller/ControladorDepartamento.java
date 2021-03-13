@@ -21,7 +21,7 @@ public class ControladorDepartamento {
 		DAODepartamento = new DepartamentoDAO();
 	}
 
-	public DepartamentoModel seleccionarDepartamentoId(int id) {
+	public DepartamentoModel seleccionarDepartamentoId(Long id) {
 		try {
 			DepartamentoModel d = DAODepartamento.buscarDepartamentoId(id);
 			// codError = "0000";
@@ -80,7 +80,7 @@ public class ControladorDepartamento {
 
 	}
 
-	public List<CiudadModel> consultarCiudadesDepartamento(Integer idDepartamento) {
+	public List<CiudadModel> consultarCiudadesDepartamento(Long idDepartamento) {
 
 		try {
 			List<CiudadModel> d = DAODepartamento.buscarDepartamentoId(idDepartamento).getCiudads();

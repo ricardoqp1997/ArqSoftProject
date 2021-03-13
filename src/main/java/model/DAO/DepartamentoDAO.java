@@ -103,7 +103,7 @@ public class DepartamentoDAO {
 		return departamentos;
 	}
 
-	public DepartamentoModel buscarDepartamentoId(int id) {
+	public DepartamentoModel buscarDepartamentoId(Long id) {
 
 		DepartamentoModel departamento = em.find(DepartamentoModel.class, id);
 		return departamento;
