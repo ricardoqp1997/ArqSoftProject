@@ -3,7 +3,7 @@ package controller;
 import java.util.List;
 
 import model.DAO.TemperaturaHumedadDAO;
-import model.DAO.CiudadDAO;
+// import model.DAO.CiudadDAO;
 import model.DTO.TemperaturaHumedadModel;
 
 public class ControladorTemperaturaHumedad {
