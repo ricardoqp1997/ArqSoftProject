@@ -1,21 +1,13 @@
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\ControladorDepartamento.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\ControladorSedeUniversidad.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\LogAuditoria.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\Util.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\CiudadDAO.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\Programa.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\ControladorAspirante.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\Departamento.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\SedeUniversidad.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\ControladorConsulta.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\ProgramaDAO.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\ControladorPrograma.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\view\BeanDepartamento.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\controller\ControladorCiudad.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\AspiranteDAO.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\Consulta.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\Ciudad.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\DepartamentoDAO.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\SedeUniversidadDAO.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DTO\Aspirante.java
-E:\Repositories GitHub\Workspace_Java\SoftwareEngineeringProj\src\main\java\model\DAO\ConsultaDAO.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DTO\DepartamentoModel.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\CiudadDAO.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\controller\ControladorDepartamento.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\DepartamentoDAO.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\view\BeanDepartamento.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\controller\ControladorCiudad.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DTO\CiudadModel.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DTO\TemperaturaHumedadModel.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\TemperaturaHumedadDAO.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\controller\ControladorTemperaturaHumedad.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\view\BeanAspirante.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DAO\PaisDAO.java
+C:\Users\RicardoQuintana\eclipse-workspace\temperatura\SoftwareEngineeringProj\src\main\java\model\DTO\PaisModel.java

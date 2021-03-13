@@ -77,10 +77,10 @@ public class BeanAspirante {
 						aspirante.getNombreAspirante() + " " + aspirante.getApellidoAspirante());
 				this.aspirantes.add(aspiranteOpcion);
 			}
-			Util.CreateLog(codError + "00", MENSAJEEXITOSO, "Consulta Exitosa en Bean Aspirantes");
+			// Util.CreateLog(codError + "00", MENSAJEEXITOSO, "Consulta Exitosa en Bean Aspirantes");
 		} catch (Exception e) {
 			codError += "03";
-			Util.CreateLog(CODIGOERROR + codError, DESCRIPCIONERROR, e.getMessage());
+			// Util.CreateLog(CODIGOERROR + codError, DESCRIPCIONERROR, e.getMessage());
 		}
 		return aspirantes;
 	}

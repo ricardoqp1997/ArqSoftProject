@@ -6,7 +6,7 @@
 	<artifactId>AdmisionesUN</artifactId>
 	<version>V3.0</version>
 	<packaging>war</packaging>
-	<name>AdmisionesUN</name>
+	<name>TemperaturaSoftware</name>
 	<!-- FIXME change it to the project's website -->
 	<description>Plataforma Web</description>
 	<url>https://admisionesun.herokuapp.com/</url>

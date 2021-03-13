@@ -2,11 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.edu.ucatolica.admisiones</groupId>
-	<artifactId>AdmisionesUN</artifactId>
+	<groupId>co.edu.ucatolica.temperatura</groupId>
+	<artifactId>TemperaturaSoftware</artifactId>
 	<version>V3.0</version>
 	<packaging>war</packaging>
-	<name>AdmisionesUN</name>
+	<name>TemperaturaSoftware</name>
 	<!-- FIXME change it to the project's website -->
 	<description>Plataforma Web</description>
 	<url>https://admisionesun.herokuapp.com/</url>

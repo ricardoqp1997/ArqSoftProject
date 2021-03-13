@@ -9,9 +9,9 @@ import javax.persistence.Persistence;
 import javax.persistence.TransactionRequiredException;
 import javax.persistence.TypedQuery;
 
-import model.DTO.CiudadModel;
+import model.DTO.TemperaturaHumedadModel;
 
-public class CiudadDAO {
+public class TemperaturaHumedadDAO {
 	private static final String PERSISTENCEUNITNAME = "TemperaturaSoftware";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
@@ -20,20 +20,20 @@ public class CiudadDAO {
 	// private static String ERRORELIMINAR = "Error al eliminar ciudad";
 	private static final String CODIGOERROR = "DAO20";
 	// private static final String MENSJAEEXITOSO = "Transaccion Exitosa";
-
-	public CiudadDAO() {
+	
+	public TemperaturaHumedadDAO() {
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
 	}
-
-	public String Create(CiudadModel ciudad) {
+	
+	public String Create(TemperaturaHumedadDAO temperatura) {
 		// String mensajeError = "";
 		String codError = "";
 		// String descError = "";
 
 		try {
 			em.getTransaction().begin();
-			em.persist(ciudad);
+			em.persist(temperatura);
 			em.getTransaction().commit();
 
 			codError = "0000";
@@ -57,24 +57,25 @@ public class CiudadDAO {
 			em.getTransaction().rollback();
 
 		} finally {
+			// Util.CreateLog(codError, descError, mensajeError);
 
 		}
 		return codError;
 	}
 
-	public String actualizarCiudad(CiudadModel ciudad) {
+	public String actualizarTemperatura(TemperaturaHumedadModel temperatura) {
 		// String mensajeError = "";
 		String codError = "";
 		// String descError = "";
 		try {
 
 			em.getTransaction().begin();
-			em.merge(ciudad);
-			// codError = "0000";
+			em.merge(temperatura);
+			codError = "0000";
 			// descError = MENSJAEEXITOSO;
 		} catch (TransactionRequiredException TransactionException) {
 			// mensajeError += " " + TransactionException.getLocalizedMessage() + " " + TransactionException.getMessage();
-			// codError = CODIGOERROR + "02";
+			codError = CODIGOERROR + "02";
 			em.getTransaction().rollback();
 			// descError = ERRORACTUALIZAR;
 		} catch (Exception e) {
@@ -83,30 +84,31 @@ public class CiudadDAO {
 			em.getTransaction().rollback();
 			// descError = ERRORACTUALIZAR;
 		} finally {
+			// Util.CreateLog(codError, descError, mensajeError);
 
 		}
 		return codError;
 	}
 
-	public List<CiudadModel> buscarTodosCiudads() {
-		TypedQuery<CiudadModel> seleccionarCiudad = em.createNamedQuery("CiudadModel.findAll", CiudadModel.class);
-		List<CiudadModel> ciudads = seleccionarCiudad.getResultList();
-		return ciudads;
+	public List<TemperaturaHumedadModel> buscarTodasTemperaturas() {
+		TypedQuery<TemperaturaHumedadModel> seleccionarTemperatura = em.createNamedQuery("TemperaturaHumedadModel.findAll", TemperaturaHumedadModel.class);
+		List<TemperaturaHumedadModel> temperaturas = seleccionarTemperatura.getResultList();
+		return temperaturas;
 	}
 
-	public CiudadModel buscarCiudadId(int id) {
-		CiudadModel ciudad = em.find(CiudadModel.class, id);
-		return ciudad;
+	public TemperaturaHumedadModel buscarTemperaturaId(int id) {
+		TemperaturaHumedadModel temperatura = em.find(TemperaturaHumedadModel.class, id);
+		return temperatura;
 	}
 
-	public CiudadModel buscarCiudadId(String nombreCiudad) {
-		CiudadModel ciudad = em.find(CiudadModel.class, nombreCiudad);
-		return ciudad;
+	public TemperaturaHumedadModel buscarTemperaturaId(String ciudadId) {
+		TemperaturaHumedadModel temperatura = em.find(TemperaturaHumedadModel.class, ciudadId);
+		return temperatura;
 	}
 
-	public String eliminarCiudad(int id) {
+	public String eliminarTemperatura(int id) {
 
-		CiudadModel ciudad = em.find(CiudadModel.class, id);
+		TemperaturaHumedadModel ciudad = em.find(TemperaturaHumedadModel.class, id);
 		// String mensajeError = "";
 		String codError = "";
 		// String descError = "";
