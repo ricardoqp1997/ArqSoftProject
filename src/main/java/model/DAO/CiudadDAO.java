@@ -11,6 +11,8 @@ import javax.persistence.TypedQuery;
 
 import model.DTO.CiudadModel;
 
+
+
 public class CiudadDAO {
 	private static final String PERSISTENCEUNITNAME = "TemperaturaSoftware";
 	private static EntityManagerFactory emf;

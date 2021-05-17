@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 
 import controller.ControladorDepartamento;
+import model.DAO.DepartamentoDAO;
 import model.DTO.CiudadModel;
 import model.DTO.DepartamentoModel;
 
@@ -56,6 +57,14 @@ public class BeanDepartamento {
 		this.ciudades = ciudades;
 	}
 
+	public List<DepartamentoModel> obtenerDepartamento(){
+		DepartamentoDAO departamentoDAO= new DepartamentoDAO();
+		
+		
+		
+		return departamentoDAO.buscarTodosDepartamentos();
+	}
+	
 	public List<SelectItem> getListaDepartamentos() {
 		try {
 			this.listaDepartamentos = new ArrayList<SelectItem>();
